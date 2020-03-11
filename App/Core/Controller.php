@@ -24,11 +24,10 @@ class Controller
         $whoops->register();
 
         extract($viewData);
-        include 'App/Views/template.php';
+        include 'vendor/template.php';
     }
     public function loadViewInTemplate($viewName, $viewData)
     {  
-        
         extract($viewData);
         include 'App/Views/' . $viewName . '.php';
     }
