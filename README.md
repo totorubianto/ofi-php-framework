@@ -10,10 +10,14 @@ Sebuah kerangka framework yang masih belum jadi hehe
 
 <div id="gettingStarted">
    If you wants to start make a section, first you can write 
-        $design = new design();
+        
+	$design = new design();
+	
    and then you can choose what do you want to do, for example you wants to make a navigation you can declare like this
+   
         $design = new design();
         $design->header( //array data here );
+	
    (you can read in <a href="#navigation">Make a navigation section</a> section to make a navigation)
 </div>
 
