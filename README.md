@@ -26,7 +26,7 @@ Sebuah kerangka framework yang masih belum jadi hehe
 	<h3>Make a navigation section</h3>
 	To make top navigation section you can write this code in your index.php
 	
-	$design = new design();
+    $design = new design();
 
     $design->header(array(
         'title' => true, // true or false
@@ -44,4 +44,11 @@ Sebuah kerangka framework yang masih belum jadi hehe
             ],
         ],        
     ));
+ 
+This for example if you choose dark theme and then float left
+![dark](https://user-images.githubusercontent.com/43981051/76418705-ad001580-63d1-11ea-887f-053806d1210d.png)
+
+And this is if you choose white theme and with float center
+![white](https://user-images.githubusercontent.com/43981051/76419132-71b21680-63d2-11ea-8538-fba5cceb2b42.png)
+
 </div>
