@@ -18,7 +18,8 @@ Sebuah kerangka framework yang masih belum jadi hehe
         $design = new design();
         $design->header( //array data here );
 	
-   (you can read in <a href="#navigation">Make a navigation section</a> section to make a navigation)
+   Note. you can read in <a href="#navigation">Make a navigation section</a> section to make a navigation.
+   
 </div>
 
 <div id="navigation">
