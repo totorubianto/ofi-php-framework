@@ -2,7 +2,7 @@
 
 Sebuah kerangka framework yang masih belum jadi hehe
 
-#### Table Of Contents
+<h3>Table Of Contents</h3>
 <ol>
   <li> <a href="#gettingStarted">Getting Started</a> </li>
   <li> <a href="#navigation">Make a navigation section</a> </li>
@@ -23,6 +23,7 @@ Sebuah kerangka framework yang masih belum jadi hehe
 </div>
 
 <div id="navigation">
+	<h3>Make a navigation section</h3>
 	To make top navigation section you can write this code in your index.php
 	
 	$design = new design();
