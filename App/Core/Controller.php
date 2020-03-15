@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Core;
-include('App/Designs/design.php');
+use App\Designs\design;
 class Controller
 {
     protected $data = [];
@@ -11,7 +11,7 @@ class Controller
         $this->loadTemplate('error_404', $this->data);
     }
     public function loadView($viewName, $viewData = array())
-    {      
+    {   
         extract($viewData); 
         include 'App/Views/' . $viewName . '.php';
     }
@@ -27,7 +27,8 @@ class Controller
         include 'vendor/template.php';
     }
     public function loadViewInTemplate($viewName, $viewData)
-    {  
+    {   
+        $design = new design();
         extract($viewData);
         include 'App/Views/' . $viewName . '.php';
     }

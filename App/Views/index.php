@@ -1,6 +1,5 @@
 <?php 
-    $design = new design();
-
+    // Create header section
     $design->header(array(
         'title' => true,
         'theme' => 'dark', // white or dark

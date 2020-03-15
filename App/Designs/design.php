@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Designs;
+
 class design
 {
     public function sidebar()
