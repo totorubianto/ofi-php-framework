@@ -19,7 +19,7 @@ class design
         include 'App\Designs\template\blogR.php';
     }
 
-    public function collapse($type, $name, $value)
+    public function collapse($data)
     {
         include 'App\Designs\template\collapse.php';
     }

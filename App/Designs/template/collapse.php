@@ -1,11 +1,11 @@
 <?php 
-    if ($type == 'btn') {
-        echo '<button class="btn" data-toggle="collapse" data-target="#' . $name . '"> '. $value .' </button>';
+    if ($data['type'] == 'btn') {
+        echo '<button class="btn" data-toggle="collapse" data-target="#' . $data['name'] . '"> '. $data['value'] .' </button>';
 
-    } elseif($type == 'collapse') {
+    } elseif($data['type'] == 'collapse') {
         echo '
-            <div id="'. $name .'" class="collapse">
-                ' . $value . '
+            <div id="'. $data['name'] .'" class="collapse">
+                ' . $data['value'] . '
             </div>
         ';
     } else {

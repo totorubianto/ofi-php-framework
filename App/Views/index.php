@@ -16,16 +16,16 @@
         ],        
     ));
 
-    $design->collapse(
-        $type = 'btn', // btn or collapse
-        $name = 'collapseku',
-        $value = "My First Collapse"
-    );
+    $design->collapse([
+        'name' => "Collapseku", // must same
+        'type' => 'btn', // btn or collapse
+        'value' => "Toggle Collapse"
+    ]);
 
     // You can put this script where do you want
-    $design->collapse(
-        $type = 'collapse',
-        $name = 'collapseku',
-        $value = "Test collapse pertamaku menggunakan function PHP",
-    )
+    $design->collapse([
+        'name' => "Collapseku", // must same
+        'type' => 'collapse',
+        'value' => "My first collapse with php function"
+    ]);
 ?>
