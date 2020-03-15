@@ -6,6 +6,7 @@ Sebuah kerangka framework yang masih belum jadi hehe
 <ol>
   <li> <a href="#gettingStarted">Getting Started</a> </li>
   <li> <a href="#navigation">Make a navigation section</a> </li>
+	<li> <a href="#makecollapse">Make a collapse</a> </li>
 </ol>
 
 <div id="gettingStarted">
