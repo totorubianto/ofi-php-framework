@@ -50,3 +50,23 @@ And this is if you choose white theme and with float right
 ![white](https://user-images.githubusercontent.com/43981051/76419132-71b21680-63d2-11ea-8538-fba5cceb2b42.png)
 
 </div>
+
+<div id="makecollapse">
+	<h3>Make a collapse </h3>
+	If you want to make a collapse you can write like this. And first if you want to make a button collapse you can type "btn" in type value.
+	
+	$design->collapse([
+        	'name' => "Collapseku", // must same
+        	'type' => 'btn', // btn or collapse
+        	'value' => "Toggle Collapse"
+    	]);
+
+And if you alredy write collapse btn script, now you can write the collapse script (please type "collapse" in type value)
+
+	// You can put this script where do you want
+    	$design->collapse([
+        	'name' => "Collapseku", // must same
+        	'type' => 'collapse',
+        	'value' => "My first collapse with php function"
+    	]);
+</div>
