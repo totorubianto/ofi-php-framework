@@ -18,6 +18,11 @@ class design
     {
         include 'App\Designs\template\blogR.php';
     }
+
+    public function collapse($type, $name, $value)
+    {
+        include 'App\Designs\template\collapse.php';
+    }
 }
 
 ?>

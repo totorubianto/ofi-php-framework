@@ -1,5 +1,4 @@
 <?php 
-    // Create header section
     $design->header(array(
         'title' => true,
         'theme' => 'dark', // white or dark
@@ -16,4 +15,17 @@
             ],
         ],        
     ));
+
+    $design->collapse(
+        $type = 'btn', // btn or collapse
+        $name = 'collapseku',
+        $value = "My First Collapse"
+    );
+
+    // You can put this script where do you want
+    $design->collapse(
+        $type = 'collapse',
+        $name = 'collapseku',
+        $value = "Test collapse pertamaku menggunakan function PHP",
+    )
 ?>

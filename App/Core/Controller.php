@@ -2,6 +2,7 @@
 
 namespace App\Core;
 use App\Designs\design;
+
 class Controller
 {
     protected $data = [];
