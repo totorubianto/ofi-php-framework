@@ -26,12 +26,10 @@ Sebuah kerangka framework yang masih belum jadi hehe
 	<h3>Make a navigation section</h3>
 	To make top navigation section you can write this code in your index.php
 	
-    $design = new design();
-
     $design->header(array(
-        'title' => true, // true or false
+        'title' => true,
         'theme' => 'dark', // white or dark
-        'float' => 'left', // left, center, right
+        'float' => 'left',
         'menu' => [
             [
                 'name' => "Menu 1",
