@@ -6,11 +6,12 @@ Sebuah kerangka framework yang sedikit meniru laravel dan codeigniter dengan cus
 <ol>
   <li> <a href="#gettingStarted">Getting Started</a> </li>
   <li> <a href="#navigation">Make a navigation section</a> </li>
-	<li> <a href="#makecollapse">Make a collapse</a> </li>
+  <li> <a href="#makecollapse">Make a collapse</a> </li>
+  <li> <a href="#runserver">Running Development server</a> </li>
 </ol>
 
 <div id="gettingStarted">
-	<h3>Make a Getting Started</h3>
+	<h3>Getting Started</h3>
    If you wants to start make a section, first you can write 
         
 	$design = new design();
@@ -71,4 +72,17 @@ And if you alredy write collapse btn script, now you can write the collapse scri
         	'type' => 'collapse',
         	'value' => "My first collapse with php function"
     	]);
+</div>
+
+<div id="runserver">
+<h3>Run Framework server </h3>
+If you need run OFI PHP Framework in development server, firts you must run your xampp server and enter to framework folder. For example for windows
+	cd C:\xampp\htdocs\lks
+	
+and you type <b>composer serve</b> in command prompt (cmd). The server running in http://localhost:9000
+
+![Screenshot (113)](https://user-images.githubusercontent.com/43981051/76718514-9ce98c80-6769-11ea-9b1a-4b9d01184870.png)
+
+![image](https://user-images.githubusercontent.com/43981051/76718618-ecc85380-6769-11ea-9e4e-caf3e9c5046d.png)
+
 </div>
