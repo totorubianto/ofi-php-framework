@@ -10,6 +10,7 @@ Sebuah kerangka framework yang sedikit meniru laravel dan codeigniter dengan cus
 </ol>
 
 <div id="gettingStarted">
+	<h3>Make a Getting Started</h3>
    If you wants to start make a section, first you can write 
         
 	$design = new design();
