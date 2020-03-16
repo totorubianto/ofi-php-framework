@@ -14,11 +14,10 @@ Sebuah kerangka framework yang sedikit meniru laravel dan codeigniter dengan cus
 	<h3>Getting Started</h3>
    If you wants to start make a section, first you can write 
         
-	$design = new design();
+	$design->
 	
    and then you can choose what do you want to do, for example you wants to make a navigation you can declare like this
    
-        $design = new design();
         $design->header( //array data here );
 	
    Note. you can read in <a href="#navigation">Make a navigation section</a> section to make a navigation.
