@@ -76,10 +76,12 @@ And if you alredy write collapse btn script, now you can write the collapse scri
 
 <div id="runserver">
 <h3>Run Framework server </h3>
-If you need run OFI PHP Framework in development server, firts you must run your xampp server and enter to framework folder. For example for windows
+If you need run OFI PHP Framework in development server, first you must run your xampp server and enter to framework folder. For example for windows
 	cd C:\xampp\htdocs\lks
 	
 and you type <b>composer serve</b> in command prompt (cmd). The server running in http://localhost:9000
+
+![Screenshot (114)](https://user-images.githubusercontent.com/43981051/76718772-5a747f80-676a-11ea-8291-cdfdd53e23e3.png)
 
 ![Screenshot (113)](https://user-images.githubusercontent.com/43981051/76718514-9ce98c80-6769-11ea-9b1a-4b9d01184870.png)
 
