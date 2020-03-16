@@ -1,5 +1,20 @@
 {
+    "name": "ofitech/ofi-php-framework",
+    "description": "A Simple PHP Framework by ofitech",
+    "type": "project",
+    "license": "open source",
+    "authors": [
+        {
+            "name": "Teguh Rijanandi",
+            "email": "teguhrijanandi02@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
     "require": {
-        "filp/whoops": "^2.7"
+        "filp/whoops": "^2.7",
+        "nesbot/carbon": "^2.31"
+    },
+    "scripts" : {
+        "server" : "php -S localhost:9000"
     }
 }

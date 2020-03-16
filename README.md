@@ -1,6 +1,6 @@
 # OFI PHP FRAMEWORK
 
-Sebuah kerangka framework yang masih belum jadi hehe
+Sebuah kerangka framework yang sedikit meniru laravel dan codeigniter dengan custom saya sendiri 😁
 
 <h3>Table Of Contents</h3>
 <ol>
