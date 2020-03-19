@@ -11,6 +11,12 @@ class Controller
     {
         $this->loadTemplate('error_404', $this->data);
     }
+
+    public function error404()
+    {
+        $this->loadTemplate('error_404');
+    }
+
     public function loadView($viewName, $viewData = array())
     {   
         extract($viewData); 

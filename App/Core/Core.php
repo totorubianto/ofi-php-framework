@@ -1,5 +1,6 @@
 <?php
 namespace App\Core;
+use App\Core\Controller;
 class Core
 {
     private $Url = null;
@@ -12,6 +13,7 @@ class Core
         $this->getUrl();
         $this->getControllerActionParam();
         $this->execute();
+        $this->route();
     }
 
     function searchByValue($id, $array) {
@@ -41,33 +43,20 @@ class Core
          $this->Url = $url;
     }
     public function getControllerActionParam()
-    {
-        include 'App\route\web.php';
+    {       
 
-        $searchValue = $this->searchByValue(
-            $_SERVER["REQUEST_URI"], $route
-         );
-
-         if ($searchValue) {
+        if (!empty($this->Url) && $this->Url != '/')
+        {
             $this->Url = explode('/', $this->Url);
             array_shift($this->Url);
             $this->Controller = $this->Url[0] . 'Controller';
             array_shift($this->Url);
-         }
-         
-
-        // if (!empty($this->Url) && $this->Url != '/')
-        // {
-        //     $this->Url = explode('/', $this->Url);
-        //     array_shift($this->Url);
-        //     $this->Controller = $this->Url[0] . 'Controller';
-        //     array_shift($this->Url);
-        // }
-        // else
-        // {
-        //     $this->Url = array();
-        //     $this->Controller = 'indexController';
-        // }
+        }
+        else
+        {
+            $this->Url = array();
+            $this->Controller = 'indexController';
+        }
 
         $this->getAction();
         $this->getParams();
@@ -81,6 +70,7 @@ class Core
         }
 
     }
+
     public function getParams()
     {
         if (count($this->Url) > 0)
@@ -100,6 +90,22 @@ class Core
             $classNameController,
             $this->Action
         ) , $this->Params);
+    }
+
+    public function route()
+    {
+        include 'App\route\web.php';
+
+        $searchValue = $this->searchByValue(
+             str_replace('/', '', $_SERVER["REQUEST_URI"]), $route
+          );
+
+         if ($searchValue) {
+            header("Location: http://" . $searchValue['to']);
+          } else {
+            $error404 = new Controller();
+            $error404->error404();
+          }
     }
 
 }

@@ -10,5 +10,9 @@ $route = [
     	'url' => "fb",
         'to' => 'www.facebook.com'
     ],
+    [
+    	'url' => "",
+        'to' => 'www.facebook.com'
+    ],
     
 ];
