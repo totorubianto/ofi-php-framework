@@ -28,4 +28,7 @@
         'type' => 'collapse',
         'value' => "My first collapse with php function"
     ]);
+
+    //echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+    
 ?>

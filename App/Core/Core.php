@@ -13,29 +13,62 @@ class Core
         $this->getControllerActionParam();
         $this->execute();
     }
+
+    function searchByValue($id, $array) {
+        foreach ($array as $key => $val) {
+            if ($val['url'] == $id) {
+              $resultSet['to'] = $val['to'];
+              
+              return $resultSet;
+            }
+        }
+        return null;
+     }
+
     public function getUrl()
     {
-        $url = '/';
-        if (isset($_GET['url']))
-        {
-            $url .= $_GET['url'];
-        }
-        $this->Url = $url;
+        //include 'App\route\web.php';
+
+        //$searchValue = $this->searchByValue(
+        //    $_SERVER["REQUEST_URI"], $route
+        //);
+
+         $url = '/';
+         if (isset($_GET['url']))
+         {
+             $url .= $_GET['url'];
+         }
+         $this->Url = $url;
     }
     public function getControllerActionParam()
     {
-        if (!empty($this->Url) && $this->Url != '/')
-        {
+        include 'App\route\web.php';
+
+        $searchValue = $this->searchByValue(
+            $_SERVER["REQUEST_URI"], $route
+         );
+
+         if ($searchValue) {
             $this->Url = explode('/', $this->Url);
             array_shift($this->Url);
             $this->Controller = $this->Url[0] . 'Controller';
             array_shift($this->Url);
-        }
-        else
-        {
-            $this->Url = array();
-            $this->Controller = 'indexController';
-        }
+         }
+         
+
+        // if (!empty($this->Url) && $this->Url != '/')
+        // {
+        //     $this->Url = explode('/', $this->Url);
+        //     array_shift($this->Url);
+        //     $this->Controller = $this->Url[0] . 'Controller';
+        //     array_shift($this->Url);
+        // }
+        // else
+        // {
+        //     $this->Url = array();
+        //     $this->Controller = 'indexController';
+        // }
+
         $this->getAction();
         $this->getParams();
     }

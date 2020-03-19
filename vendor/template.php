@@ -13,8 +13,8 @@
 
 	<?php $this->loadViewInTemplate($viewName,$viewData) ?>
 	
-	<script src="<?php echo BASE ?> /assets/js/jquery.min.js"></script>
-	<script src="<?php echo BASE ?> /assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo BASE ?>/assets/js/jquery.min.js"></script>
+	<script src="<?php echo BASE ?>/assets/js/bootstrap.min.js"></script>
 
 </body>
 </html>
