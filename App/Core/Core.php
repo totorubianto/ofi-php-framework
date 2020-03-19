@@ -10,16 +10,13 @@ class Core
 
     public function run()
     {
-        $this->getUrl();
-        $this->getControllerActionParam();
-        $this->execute();
         $this->route();
     }
 
     function searchByValue($id, $array) {
         foreach ($array as $key => $val) {
             if ($val['url'] == $id) {
-              $resultSet['to'] = $val['to'];
+              $resultSet = $val;
               
               return $resultSet;
             }
@@ -27,21 +24,6 @@ class Core
         return null;
      }
 
-    public function getUrl()
-    {
-        //include 'App\route\web.php';
-
-        //$searchValue = $this->searchByValue(
-        //    $_SERVER["REQUEST_URI"], $route
-        //);
-
-         $url = '/';
-         if (isset($_GET['url']))
-         {
-             $url .= $_GET['url'];
-         }
-         $this->Url = $url;
-    }
     public function getControllerActionParam()
     {       
 
@@ -96,15 +78,50 @@ class Core
     {
         include 'App\route\web.php';
 
-        $searchValue = $this->searchByValue(
-             str_replace('/', '', $_SERVER["REQUEST_URI"]), $route
-          );
+        $get_url = $_SERVER["REQUEST_URI"];
+        
+        // Konvert string ke array
+        $url_array = str_split($get_url);
+        
+        // Proses menghilangkan data array index 0
+        // dan data array index 0 adalah tanda /
+        
+        array_shift($url_array);
+        
+        // Hasil URL setelah melalui proses
+        // hapus tanda / di awal URL
+        
+        $url = implode('', $url_array);
+
+        $searchValue = $this->searchByValue($url, $route);
+        $controller = new Controller();
+
+        // Jika URL Tersedia 
 
          if ($searchValue) {
-            header("Location: http://" . $searchValue['to']);
+
+            // Jika type print maka cetak value
+            if ($searchValue['type'] == 'print') {
+                echo $searchValue['to'];
+            
+            // Jika type url maka redirect ke url yang dituju
+            } elseif($searchValue['type'] == 'url') {
+                header("Location: http://" . $searchValue['to']);
+
+            // Jika type view maka redirect ke view yang ada.
+            } elseif($searchValue['type'] == 'view') {
+                $controller->Views($searchValue['to'], '');
+            
+            // Jika typenya belum terdeklarasi
+            } elseif(!$searchValue['type'] || $searchValue['type'] == '') {
+                $controller->error500("Route type can't Be null, please declare the url type on your route files");
+            }
+
           } else {
-            $error404 = new Controller();
-            $error404->error404();
+
+        // Jika URL tidak tersedia maka 404 Error
+            
+            $controller->error404();
           }
     }
 

@@ -2,17 +2,20 @@
 
 $route = [
 	[
-    	'url' => "z",
+        'url' => "z",
+        'type' => 'url',
         'to' => 'www.google.com'
     ],
     
     [
-    	'url' => "fb",
+        'url' => "fb",
+        'type' => '',
         'to' => 'www.facebook.com'
     ],
     [
-    	'url' => "",
-        'to' => 'www.facebook.com'
+        'url' => "", // Home
+        'type' => 'view',
+        'to' => 'index'
     ],
     
 ];
