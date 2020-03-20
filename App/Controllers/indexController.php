@@ -16,4 +16,9 @@ class indexController extends Controller
 	{
 		echo "wkwkwk";
 	}
+
+	public function password_hash()
+	{
+		echo helper::hash('teguh2001');
+	}
 }

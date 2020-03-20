@@ -13,6 +13,11 @@ class helper
         } 
     }   
 
+    public static function hash($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
     public static function json_beautify($json_url)
     {
         // Library untuk mendapatkan data API dan mempercantiknya

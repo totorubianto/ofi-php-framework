@@ -19,9 +19,9 @@ $route = [
     ],
 
     [
-        'url' => "test-controller",
+        'url' => "test-controller-pass-hash",
         'type' => 'controller',
-        'to' => 'indexController@test'
+        'to' => 'indexController@password_hash'
     ],
     [
         'url' => "json-sample",
