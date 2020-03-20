@@ -7,14 +7,15 @@
 	<meta  name="key" content="google">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href=" <?php echo BASE ?>/assets/css/bootstrap.min.css">
+	
+		<link rel="stylesheet" type="text/css" href=" /assets/css/bootstrap.min.css">
 </head>
 <body>
 
 	<?php $this->loadViewInTemplate($viewName,$viewData) ?>
-	
-	<script src="<?php echo BASE ?>/assets/js/jquery.min.js"></script>
-	<script src="<?php echo BASE ?>/assets/js/bootstrap.min.js"></script>
+
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.min.js"></script>
 
 </body>
 </html>

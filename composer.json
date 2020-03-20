@@ -16,5 +16,9 @@
     },
     "scripts" : {
         "server" : "php -S localhost:9000"
+    },
+
+    "config": {
+        "process-timeout": 0
     }
 }

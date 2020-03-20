@@ -10,4 +10,9 @@ class indexController extends Controller
 		$result=$this->User->get4();
 		$this->loadTemplate('index',array('result'=>$result));
 	}
+
+	public function test()
+	{
+		print_r($_POST);
+	}
 }

@@ -62,16 +62,16 @@ class Core
     }
     public function execute()
     {
-        $className = '\\APP\\Controllers\\' . $this->Controller;
-        if (!class_exists($className))
-        {
-            (new \App\Controllers\errorController())->index();
-        }
-        $classNameController = new $className();
-        call_user_func_array(array(
-            $classNameController,
-            $this->Action
-        ) , $this->Params);
+        // $className = '\\APP\\Controllers\\' . $this->Controller;
+        // if (!class_exists($className))
+        // {
+        //     (new \App\Controllers\errorController())->index();
+        // }
+        // $classNameController = new $className();
+        // call_user_func_array(array(
+        //     $classNameController,
+        //     $this->Action
+        // ) , $this->Params);
     }
 
     public function route()
@@ -115,6 +115,26 @@ class Core
             // Jika typenya belum terdeklarasi
             } elseif(!$searchValue['type'] || $searchValue['type'] == '') {
                 $controller->error500("Route type can't Be null, please declare the url type on your route files");
+
+            } elseif ($searchValue['type'] == 'controller') {
+
+                // Jika type controller maka memanggil controller
+
+                $request_controller = explode('@', $searchValue['to']);
+
+                $get_only_Controller_Name = $request_controller[0];
+                $get_only_Method_Name = $request_controller[1];
+
+                $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
+
+                if (!class_exists($className)) {
+                    $controller->error500("Controller " . $className . ' not found please recorrect again');
+                }
+
+                $classNameController = new $className();
+
+                $classNameController->$get_only_Method_Name();
+
             }
 
           } else {

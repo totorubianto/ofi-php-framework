@@ -3,11 +3,16 @@
 session_start();
 
 require 'config.php';
+require 'vendor/autoload.php';
 
 switch (ENVIRONMENT) {
     case 'development':
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
+
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
         break;
 
     case 'production':

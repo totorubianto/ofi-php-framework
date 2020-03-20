@@ -17,5 +17,11 @@ $route = [
         'type' => 'view',
         'to' => 'index'
     ],
+
+    [
+        'url' => "test-controller",
+        'type' => 'controller',
+        'to' => 'indexController@test'
+    ],
     
 ];
