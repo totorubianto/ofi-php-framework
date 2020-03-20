@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Models\User;
+use App\Core\helper;
 
 class indexController extends Controller
 {
@@ -13,6 +14,6 @@ class indexController extends Controller
 
 	public function test()
 	{
-		print_r($_POST);
+		echo "wkwkwk";
 	}
 }

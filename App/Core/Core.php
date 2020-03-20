@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 use App\Core\Controller;
+use App\Core\helper;
+
 class Core
 {
     private $Url = null;
@@ -45,6 +47,7 @@ class Core
 
         $searchValue = $this->searchByValue($url, $route);
         $controller = new Controller();
+        $helper = new helper();
 
         // Jika URL Tersedia 
 
@@ -80,6 +83,11 @@ class Core
                 $classNameController = new $className();
                 $classNameController->$get_only_Method_Name();
 
+            } elseif($searchValue['type'] == 'json') {
+
+                // Library untuk mendapatkan data API dan mempercantiknya
+                // cuma metode get yang diizinkan
+                return $helper->json_beautify($searchValue['from']);
             }
 
           } else {

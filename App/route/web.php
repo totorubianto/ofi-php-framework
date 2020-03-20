@@ -23,5 +23,10 @@ $route = [
         'type' => 'controller',
         'to' => 'indexController@test'
     ],
+    [
+        'url' => "json-sample",
+        'type' => 'json',
+        'from' => 'https://jsonplaceholder.typicode.com/todos/1',
+    ],
     
 ];
