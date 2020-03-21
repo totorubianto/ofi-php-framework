@@ -75,9 +75,10 @@ class helper
         $z= array_search($ip, $block);
 
         if(in_array($ip, $block)) {
-            $controller = new Controller();
-            $controller->error500("You IP Cant access our webiste, 
-            please contact our admin for more infomation");
+            header('HTTP/1.1 503 Service Temporarily Unavailable');
+            header('Status: 503 Service Temporarily Unavailable');
+            header($_SERVER["SERVER_PROTOCOL"]." 503 Service Temporarily Unavailable", true, 503);
+            exit();
           }
           
     }
