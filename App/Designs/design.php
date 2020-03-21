@@ -4,22 +4,22 @@ namespace App\Designs;
 
 class design
 {
-    public function sidebar()
+    public static function sidebar()
     {
         include 'App\Designs\template\sidebar.php';
     }
 
-    public function header($navbar)
+    public static function header($navbar)
     {
         include 'App\Designs\template\header.php';
     }
 
-    public function blogR($left, $right)
+    public static function blogR($left, $right)
     {
         include 'App\Designs\template\blogR.php';
     }
 
-    public function collapse($data)
+    public static function collapse($data)
     {
         include 'App\Designs\template\collapse.php';
     }

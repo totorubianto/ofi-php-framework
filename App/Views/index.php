@@ -6,12 +6,12 @@
         'menu' => [
             [
                 'name' => "Menu 1",
-                'url' => "http://google.com"
+                'url' => "/z"
             ],
 
             [
                 'name' => "Menu 2",
-                'url' => "http://google.com"
+                'url' => "/fb"
             ],
         ],        
     ));

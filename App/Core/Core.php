@@ -10,6 +10,11 @@ class Core
     private $Action = '';
     private $Params = [];
 
+    public function __construct()
+    {
+        $this->middleware();
+    }
+
     public function run()
     {
         $this->route();
@@ -24,6 +29,11 @@ class Core
             }
         }
         return null;
+     }
+
+     public function middleware()
+     {
+        helper::blockIp();
      }
 
     public function route()
