@@ -1,35 +1,34 @@
 <?php
 
-session_start();
+/**
+ * OFI PHP Framework
+ * By Teguh Rijanandi 
+ * Version 1.0
+ * Contact : teguhrijanandi02@gmail.com
+ */
 
+session_start();
 require 'config.php';
 require 'vendor/autoload.php';
 
-switch (ENVIRONMENT) {
-    case 'development':
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
+use App\Core\Core;
+use App\Core\Controller;
+use App\Core\helper;
 
-        $whoops = new \Whoops\Run;
-        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-        $whoops->register();
-        break;
+// Dont change this line
+define('BASE', (
+    isset($_SERVER['HTTPS']) && 
+    $_SERVER['HTTPS'] === 'on' ? "https" : "http") . 
+    "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 
-    case 'production':
-        ini_set('display_errors', 0);
-        ini_set('display_startup_errors', 0);
-        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-        break;
-    
-    default:
-        header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-        echo 'The application environment is not set correctly.';
-        exit(1); // EXIT_ERROR
-        break;
-}
+define('BASEURL', __DIR__ . '/');
+define('PROJECTPATH', __DIR__);
+header('Access-Control-Allow-Origin: *');
 
-
-error_reporting(E_ALL);
+/**
+ * OFI PHP Framework
+ * Register autoload service
+ */
 
 function autoload($class_name)
 {
@@ -42,8 +41,32 @@ function autoload($class_name)
 
 spl_autoload_register('autoload');
 
+switch (ENVIRONMENT) {
+    case 'development':
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
 
-use App\Core\Core;
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
+        error_reporting(E_ALL);
+        error_reporting(E_ALL & E_NOTICE & E_DEPRECATED & E_STRICT & E_USER_NOTICE & E_USER_DEPRECATED);
+        break;
+
+    case 'production':
+        ini_set('display_errors', 0);
+        ini_set('display_startup_errors', 0);
+        error_reporting(0);
+        break;
+    
+    default:
+        header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+        $controller = new Controller();
+        $controller->error500('The application environment is not set correctly, please check in your config file');
+        exit(1); // EXIT_ERROR
+        break;
+}
+
 
 $core = new App\Core\Core();
 $core->run();
