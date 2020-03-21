@@ -11,7 +11,7 @@ class Controller
     {   
         $viewData['status'] = 404;
         $viewData['title'] = "Not Found";
-        $viewData['msg'] = "Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable";
+        $viewData['msg'] = "Sorry but the page you are looking for does not exist, have been removed.";
 
         extract($viewData);
         include 'App/Views/error_404.php';
