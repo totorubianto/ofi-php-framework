@@ -1,7 +1,5 @@
 <?php
 namespace App\Core;
-use App\Core\Controller;
-use App\Core\helper;
 
 class Core
 {
