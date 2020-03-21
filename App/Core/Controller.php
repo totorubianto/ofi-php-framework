@@ -10,7 +10,7 @@ class Controller
     public function error404()
     {   
         $viewData['status'] = 404;
-        $viewData['title'] = "Page Not Found";
+        $viewData['title'] = "Not Found";
         $viewData['msg'] = "Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable";
 
         extract($viewData);
