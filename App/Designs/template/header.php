@@ -29,13 +29,13 @@
   
   <?php
   if ($navbar['float'] == 'right') {
-    echo "justify-content-end d-flex";
+    echo "justify-content-end";
 
   } elseif($navbar['float'] == 'left') {
-    echo "justify-content-start d-flex";
+    echo "justify-content-start";
     
   } elseif($navbar['float'] == 'center') {
-    echo "justify-content-center d-flex";
+    echo "justify-content-center";
   }
   
   ?>
