@@ -23,6 +23,11 @@ class design
     {
         include 'App\Designs\template\collapse.php';
     }
+
+    public static function form($method, $data)
+    {
+        include 'App\Designs\template\formGroup.php';
+    }
 }
 
 ?>
