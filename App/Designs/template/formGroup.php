@@ -11,15 +11,7 @@
                     echo "required";
                 }
             ?>
-        type="
-            <?php if(!$data['input'][$a]['type']) { 
-                echo 'text';
-            } else {
-                echo strtolower($data['input'][$a]['type']);
-            }
-            
-            ?>
-        "   
+        type="<?php if(!$data['input'][$a]['type']) {echo 'text';} else {echo strtolower($data['input'][$a]['type']);}?>"   
             name="<?php echo strtolower(str_replace(' ', '', $data['input'][$a]['name'])) ?>"
             class="form-control mb-2"
         >
