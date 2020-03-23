@@ -10,9 +10,14 @@
             ],
 
             [
-                'name' => "Menu 2",
-                'url' => "/fb"
+                'name' => "Login",
+                'url' => "/login"
             ],
+
+            [
+                'name' => "Register",
+                'url' => '/register'
+            ]
         ],        
     ));
 
