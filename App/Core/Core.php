@@ -63,15 +63,47 @@ class Core
 
             // Jika type print maka cetak value
             if ($searchValue['type'] == 'print') {
-                echo $searchValue['to'];
-            
+                
+                // Checking HTTP Method
+                if (!$searchValue['method']) { // Only POST or GET
+                    // Only method value not found, so default method is GET
+                    echo $searchValue['to'];
+                } else {
+                    if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
+                        // Next Request
+                        echo $searchValue['to'];
+                    } else {
+                        $controller->error500( "Error /" . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
+                    }
+                }   
+                
             // Jika type url maka redirect ke url yang dituju
             } elseif($searchValue['type'] == 'url') {
-                header("Location: http://" . $searchValue['to']);
 
+                // Checking HTTP Method
+                if (!$searchValue['method']) { 
+                    header("Location: http://" . $searchValue['to']);
+                } else {
+                    if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
+                        header("Location: http://" . $searchValue['to']);
+                    } else {
+                        $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
+                    }
+                } 
+                
             // Jika type view maka redirect ke view yang ada.
             } elseif($searchValue['type'] == 'view') {
-                $controller->Views($searchValue['to'], '');
+
+                // Checking HTTP Method
+                if (!$searchValue['method']) { 
+                    $controller->Views($searchValue['to'], '');
+                } else {
+                    if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
+                        $controller->Views($searchValue['to'], '');
+                    } else {
+                        $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
+                    }
+                } 
             
             // Jika typenya belum terdeklarasi
             } elseif(!$searchValue['type'] || $searchValue['type'] == '') {
@@ -87,15 +119,37 @@ class Core
                 $get_only_Controller_Name = $request_controller[0];
                 $get_only_Method_Name = $request_controller[1];
 
-                $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
-                $classNameController = new $className();
-                $classNameController->$get_only_Method_Name();
+
+                // Checking HTTP Method
+                if (!$searchValue['method']) { 
+                    $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
+                    $classNameController = new $className();
+                    $classNameController->$get_only_Method_Name();
+                } else {
+                    if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
+                        $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
+                        $classNameController = new $className();
+                        $classNameController->$get_only_Method_Name();
+                    } else {
+                        $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
+                    }
+                }
 
             } elseif($searchValue['type'] == 'json') {
 
                 // Library untuk mendapatkan data API dan mempercantiknya
                 // cuma metode get yang diizinkan
-                return $helper->json_beautify($searchValue['from']);
+
+                // Checking HTTP Method
+                if (!$searchValue['method']) { 
+                    return $helper->json_beautify($searchValue['from']);
+                } else {
+                    if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
+                        return $helper->json_beautify($searchValue['from']);
+                    } else {
+                        $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
+                    }
+                } 
             }
 
           } else {
