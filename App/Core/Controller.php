@@ -2,10 +2,17 @@
 
 namespace App\Core;
 use App\Designs\design;
+use App\Models\DB;
 
 class Controller
 {
     protected $data = [];
+
+    public function __construct()
+    {
+        $this->DB = new DB;
+        $this->db = new DB;
+    }
 
     public function error404()
     {   
