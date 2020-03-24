@@ -16,5 +16,10 @@ class Model
     {
         return mysqli_num_rows($sql);
     }
+
+    public function fetch($sql)
+    {
+        return mysqli_fetch_assoc($sql);
+    }
 }
 

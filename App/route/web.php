@@ -20,6 +20,7 @@ $route = [
     ['url' => "login",'type' => 'controller','to' => 'authController@login',],
     ['url' => "register",'type' => 'controller','to' => 'authController@register',],
     ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'authController@register_save',],
+    ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'authController@login_detect',],
 
 	[
         'url' => "z",

@@ -13,13 +13,16 @@
 
 <div class="container-fluid tengah">
     <div class="container col-md-4">
+        <?php 
+            $flash->display();
+        ?>
         <div class="card">
             <div class="card-body">
                 <h5 class="mb-3">Login Page</h5>
 
                 <?php 
                     $design->form('post', [
-                        'url' => '#',
+                        'url' => '/login-detect',
                         'submit' => 'Login',
                         'input' => [
                             [

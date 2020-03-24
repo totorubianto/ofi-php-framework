@@ -42,13 +42,13 @@ class DB extends Model {
     }
 
     // Untuk menampilkan semua data by array
-    public static function get()
+    public static function all()
     {
         # code...
     }
 
     // menampilkan data berdasarkan id by array
-    public static function getById($id)
+    public static function where($data)
     {
         # code...
     }
@@ -65,9 +65,30 @@ class DB extends Model {
         # code...
     }
 
-    public function cek_pendaftar(Type $var = null)
-    {
-        # code...
+    public function deteksi_login($data)
+    {      
+        $usernameoremail = $data['usernameoremail'];
+        $password = $data['password'];
+
+        $sql = "SELECT * FROM users WHERE username =  '$usernameoremail' OR email = '$usernameoremail'";
+        $cek_akun = $this->db->query($sql);
+
+        if(Model::count($cek_akun) > 0) {
+            // fetch data berdasarkan query
+            $akun = Model::fetch($cek_akun);
+
+            if (password_verify($password, $akun['password'])) {
+                $cekss['status'] = 'yes';
+                $cekss['id'] = $akun['id'];
+                return $cekss;
+            } else {
+                return 'no';
+            }
+
+        } else {
+            $this->flash->error('Failed to login, try again', '/login');    
+        }
+        
     }
 }
 

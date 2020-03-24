@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Models\User;
 use App\Core\helper;
 use App\Models\DB;
+use App\Core\Model;
 
 class authController extends Controller {
 
@@ -31,9 +32,28 @@ class authController extends Controller {
         $this->DB->insert($Auth, 'users');
         
        if($status == 'gagal') {
-            $this->flash->error('Gagal mendaftar silahkan coba lagi', '/register');    
+            $this->flash->error('Failed to registration, try again', '/register');    
         } else {
-            $this->flash->success('Berhasil mendaftar, silahkan login', '/register');
+            $this->flash->success('Registration success, please login now', '/register');
+        }
+    }
+
+    public function login_detect()
+    {
+        $Auth['usernameoremail'] = helper::request('usernameoremail');
+        $Auth['password'] = helper::request('password');
+
+        $cek = $this->DB->deteksi_login($Auth);
+
+        if($cek['status'] == 'yes') {
+        echo '  <script>
+                    localStorage.setItem("id_user", '. $cek["id"] .');
+                    localStorage.setItem("login_user", "sukses");
+                </script>
+            ';
+        $_SESSION['login_user'] = "sukses";
+        } else {
+            $this->flash->error('Failed to login, try again', '/login');   
         }
     }
 }
