@@ -28,7 +28,7 @@ class DB extends Model {
         $konten = rtrim($konten, ",");
 
         // Skrip SQL untuk insert
-        $sql = "INSERT INTO `users` ($value) VALUES ($konten)";       
+        $sql = "INSERT INTO $table ($value) VALUES ($konten)";       
         $result = $this->db->query($sql);
 
         if($result) {
@@ -61,6 +61,11 @@ class DB extends Model {
 
     // Untuk menghapus data berdasarkan id
     public static function delete($id)
+    {
+        # code...
+    }
+
+    public function cek_pendaftar(Type $var = null)
     {
         # code...
     }
