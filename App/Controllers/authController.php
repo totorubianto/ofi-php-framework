@@ -30,10 +30,10 @@ class authController extends Controller {
 
         $this->DB->insert($Auth, 'users');
         
-        if(!$status) {
-            $this->flash->error('Gagal mendaftar silahkan coba lagi', '/register');  
-        }else {
-            $this->flash->success('Berhasil mendaftar, silahkan login', '/register');  
+       if($status == 'gagal') {
+            $this->flash->error('Gagal mendaftar silahkan coba lagi', '/register');    
+        } else {
+            $this->flash->success('Berhasil mendaftar, silahkan login', '/register');
         }
     }
 }

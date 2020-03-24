@@ -5,8 +5,7 @@ use App\Core\Model;
 use mysqli;
 class DB extends Model {
 
-    // Status ketika proses sql
-    public $status = null;
+    public $status;
 
     // Untuk menyimpan data
     public function insert($data, $table)
@@ -31,11 +30,11 @@ class DB extends Model {
         // Skrip SQL untuk insert
         $sql = "INSERT INTO `users` ($value) VALUES ($konten)";       
         $result = $this->db->query($sql);
-        
-        if(!$result) {
-            $status = false;
+
+        if($result) {
+            $status = 'berhasil';
         } else {
-            $status = true;
+            $status = 'gagal';
         }
 
         return $status;
