@@ -12,7 +12,8 @@
     "minimum-stability": "beta",
     "require": {
         "filp/whoops": "^2.7",
-        "nesbot/carbon": "^2.31"
+        "nesbot/carbon": "^2.31",
+        "plasticbrain/php-flash-messages": "^1.0"
     },
     "scripts" : {
         "server" : "php -S localhost:9000"
