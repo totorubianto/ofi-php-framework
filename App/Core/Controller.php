@@ -12,6 +12,7 @@ class Controller
     {
         $this->DB = new DB;
         $this->db = new DB;
+        $this->flash = new \Plasticbrain\FlashMessages\FlashMessages();
     }
 
     public function error404()
@@ -62,6 +63,7 @@ class Controller
     }
     public function loadViewInTemplate($viewName, $viewData)
     {   
+        $flash = new \Plasticbrain\FlashMessages\FlashMessages();
         $design = new design();
         extract($viewData);
         include 'App/Views/' . $viewName . '.php';

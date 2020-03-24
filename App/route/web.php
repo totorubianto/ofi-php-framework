@@ -17,12 +17,10 @@
 
 $route = [
     // Auth Route Declaration
-    [
-        'url' => "login",
-        'type' => 'controller',
-        'to' => 'authController@login',
-    ],
-    
+    ['url' => "login",'type' => 'controller','to' => 'authController@login',],
+    ['url' => "register",'type' => 'controller','to' => 'authController@register',],
+    ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'authController@register_save',],
+
 	[
         'url' => "z",
         'type' => 'url',
@@ -42,7 +40,7 @@ $route = [
         'to' => 'www.facebook.com'
     ],
     [
-        'url' => "", // Home
+        'url' => "", // Home (main index.php file)
         'type' => 'view',
         'to' => 'index'
     ],
