@@ -15,6 +15,6 @@ class homeController extends Controller{
 
     public function home()
     {
-        echo "wlwlwl";
+        $this->Views('home', null);
     }
 }
