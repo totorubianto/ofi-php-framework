@@ -1,14 +1,20 @@
 <?php 
 
-namespace App\Controllers;
+namespace App\Controllers\Auth;
 
 use App\Core\Controller;
 use App\Models\User;
 use App\Core\helper;
 use App\Models\DB;
 use App\Core\Model;
+use App\Middleware\auth\auth;
 
 class authController extends Controller {
+
+    public function __construct()
+    {
+        auth::check();
+    }
 
     // Redirect to login page
     public function login()
@@ -43,17 +49,16 @@ class authController extends Controller {
         $Auth['usernameoremail'] = helper::request('usernameoremail');
         $Auth['password'] = helper::request('password');
 
-        $cek = $this->DB->deteksi_login($Auth);
+        $Databse_engine = new DB();
+        $cek = $Databse_engine->deteksi_login($Auth);
 
         if($cek['status'] == 'yes') {
-        echo '  <script>
-                    localStorage.setItem("id_user", '. $cek["id"] .');
-                    localStorage.setItem("login_user", "sukses");
-                </script>
-            ';
-        $_SESSION['login_user'] = "sukses";
+            $_SESSION['login_user'] = "sukses";
+            $_SESSION['id_user'] = $cek['id'];
+            helper::redirect('/home');
         } else {
-            $this->flash->error('Failed to login, try again', '/login');   
+            $flash = new \Plasticbrain\FlashMessages\FlashMessages();
+            $flash->error('Failed to login, try again', '/login');   
         }
     }
 }

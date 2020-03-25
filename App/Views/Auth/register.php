@@ -21,9 +21,9 @@
 
                 <?php 
                     $design->form('post', [
-                        'url' => '/register-save',
-                        'submit' => 'Register',
-                        'input' => [
+                        'url' => '/register-save', // where do you want to go
+                        'submit' => 'Register', // button value
+                        'input' => [ // All of input content
                             [
                                 'name' => 'Full name',
                             ],

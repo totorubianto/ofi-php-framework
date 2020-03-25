@@ -65,6 +65,14 @@ class DB extends Model {
         # code...
     }
 
+    public function get_user_login($val)
+    {
+        $id = $val['id'];
+        $sql = "SELECT * FROM users WHERE id = $id";
+        $query = $this->db->query($sql);
+        return Model::fetch($query);
+    }
+
     public function deteksi_login($data)
     {      
         $usernameoremail = $data['usernameoremail'];

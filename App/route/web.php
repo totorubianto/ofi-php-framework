@@ -17,10 +17,11 @@
 
 $route = [
     // Auth Route Declaration
-    ['url' => "login",'type' => 'controller','to' => 'authController@login',],
-    ['url' => "register",'type' => 'controller','to' => 'authController@register',],
-    ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'authController@register_save',],
-    ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'authController@login_detect',],
+    ['url' => "login",'type' => 'controller','to' => 'Auth\authController@login',],
+    ['url' => "register",'type' => 'controller','to' => 'Auth\authController@register',],
+    ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@register_save',],
+    ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@login_detect',],
+    ['url' => "home",'type' => 'controller','to' => 'Auth\homeController@home',],
 
 	[
         'url' => "z",
