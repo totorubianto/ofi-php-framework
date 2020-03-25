@@ -64,6 +64,7 @@ class Controller
     public function loadViewInTemplate($viewName, $viewData)
     {   
         $flash = new \Plasticbrain\FlashMessages\FlashMessages();
+        $helper = new \App\Core\helper();
         $design = new design();
         extract($viewData);
         include 'App/Views/' . $viewName . '.php';
