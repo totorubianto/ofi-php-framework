@@ -12,6 +12,8 @@ class auth {
     {
        if($_SESSION['login_user'] != 'sukses') {
             $kontroller  = new Controller();
+            $flash = new \Plasticbrain\FlashMessages\FlashMessages();
+            $flash->error('Failed to login, try again'); 
             $kontroller->loadTemplate('Auth\login', null);
        } else {
             self::cek_valuenya();
