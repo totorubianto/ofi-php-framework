@@ -61,6 +61,13 @@ class authController extends Controller {
             $flash->error('Failed to login, try again', '/login');   
         }
     }
+
+    public function logout()
+    {
+        $_SESSION['login_user'] = null;
+        $_SESSION['id_user'] = null;
+        helper::redirect('/login');
+    }
 }
 
 ?>
