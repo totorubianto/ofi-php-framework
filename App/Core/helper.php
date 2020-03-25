@@ -2,6 +2,7 @@
 
 namespace App\Core;
 use App\Core\Controller;
+use App\Models\DB;
 
 class helper 
 {
@@ -91,6 +92,20 @@ class helper
             exit();
           }
           
+    }
+
+    public static function auth($datas)
+    {
+        if(!$_SESSION['login_user']) {
+            $results = null;
+        } else {
+            $val['id'] = $_SESSION['id_user']; 
+            $database_engine = new DB();
+            $hasil = $database_engine->get_user_login($val);
+            $results = $hasil[$datas];
+        }
+
+        return $results;
     }
 
 }
