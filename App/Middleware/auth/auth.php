@@ -6,6 +6,13 @@ use App\Core\Model;
 use App\Core\helper;
 use App\Core\Controller;
 
+/**
+ * Login Middleware
+ * you can use this middleware to your controller
+ * if you want to prohibit not login user for accessing
+ * your controller.
+ */
+
 class auth {
 
     public static function check()
