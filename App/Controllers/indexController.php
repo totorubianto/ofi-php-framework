@@ -19,6 +19,12 @@ class indexController extends Controller
 
 	public function password_hash()
 	{
-		echo helper::hash('teguh2001');
+		//echo helper::hash(helper::request('pass'));
+		echo helper::request('pass');
+	}
+
+	public function id_print($id)
+	{
+		print_r($id);
 	}
 }
