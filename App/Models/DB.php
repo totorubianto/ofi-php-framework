@@ -42,9 +42,11 @@ class DB extends Model {
     }
 
     // Untuk menampilkan semua data by array
-    public static function all()
+    public static function all($table)
     {
-        # code...
+        $sql = "SELECT * FROM $table ";
+        $result = parent::connect($sql);
+        return Model::fetch($result);
     }
 
     // menampilkan data berdasarkan id by array
