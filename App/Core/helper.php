@@ -8,16 +8,11 @@ class helper
 {
     public static function request($val_request)
     {   
-        // Request cuma bisa di pake pada method POST
-        // method GET nggak bisa
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
             // memberi fasilitas bisa mengambil 
             // inputan yang namanya ada spasinya
             $hapus_spasi = str_replace(' ', '', $val_request);
             $jadi_kecil = strtolower($hapus_spasi);
             return $_REQUEST[$jadi_kecil];
-        } 
     }   
 
     public static function hash($password)
