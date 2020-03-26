@@ -20,6 +20,11 @@ class helper
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
+    public function slug($string)
+    {
+        return strtolower(str_replace(' ', '-', $string));
+    }
+
     public function redirect($url)
     {
         return header("Location: " . $url);
