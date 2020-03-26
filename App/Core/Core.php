@@ -23,6 +23,10 @@ class Core
             if(strpos($id, $val['url']) !== false) {
                 $resultSet = $val;  
                    return $resultSet;
+
+            } elseif($val['url'] == '') {
+                $resultSet = $val;  
+                return $resultSet;
             }
         }
         return null;
