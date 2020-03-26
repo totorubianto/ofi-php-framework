@@ -28,5 +28,10 @@ class Model
     {
         return mysqli_fetch_assoc($sql);
     }
+
+    public function fetchRow($sql)
+    {
+        return mysqli_fetch_all($sql);
+    }
 }
 
