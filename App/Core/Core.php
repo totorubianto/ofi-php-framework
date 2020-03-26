@@ -56,15 +56,15 @@ class Core
         $controller = new Controller();
         $helper = new helper();
 
-        // Get param process
-        $url_components = parse_url($get_url); 
-        parse_str($url_components['query'], $params); 
-        $paramData = [];
+        // // Get param process
+        // $url_components = parse_url($get_url); 
+        // parse_str($url_components['query'], $params); 
+        // $paramData = [];
 
-        foreach ($params as $key => $value) {
-            //echo $key . ' => ' . $value . '<br>' ; 
-            $paramData[$key] = $value;
-        }
+        // foreach ($params as $key => $value) {
+        //     //echo $key . ' => ' . $value . '<br>' ; 
+        //     $paramData[$key] = $value;
+        // }
 
         // Jika URL Tersedia 
 
@@ -132,12 +132,12 @@ class Core
                 if (!$searchValue['method']) { 
                     $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
                     $classNameController = new $className();
-                    $classNameController->$get_only_Method_Name($paramData);
+                    $classNameController->$get_only_Method_Name();
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
                         $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
                         $classNameController = new $className();
-                        $classNameController->$get_only_Method_Name($paramData);
+                        $classNameController->$get_only_Method_Name();
                     } else {
                         $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
                     }
