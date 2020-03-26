@@ -46,7 +46,7 @@ class DB extends Model {
     {
         $sql = "SELECT * FROM $table ";
         $result = parent::connect($sql);
-        return Model::fetch($result);
+        return array(Model::fetch($result));
     }
 
     // menampilkan data berdasarkan id by array
