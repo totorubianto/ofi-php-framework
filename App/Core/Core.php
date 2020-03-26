@@ -20,10 +20,9 @@ class Core
 
     function searchByValue($id, $array) {
         foreach ($array as $key => $val) {
-            if ($val['url'] == $id) {
-              $resultSet = $val;
-              
-              return $resultSet;
+            if(strpos($id, $val['url']) !== false) {
+                $resultSet = $val;  
+                   return $resultSet;
             }
         }
         return null;
@@ -56,6 +55,16 @@ class Core
         $searchValue = $this->searchByValue($url, $route);
         $controller = new Controller();
         $helper = new helper();
+
+        // Get param process
+        $url_components = parse_url($get_url); 
+        parse_str($url_components['query'], $params); 
+        $paramData = [];
+
+        foreach ($params as $key => $value) {
+            //echo $key . ' => ' . $value . '<br>' ; 
+            $paramData[$key] = $value;
+        }
 
         // Jika URL Tersedia 
 
@@ -99,7 +108,7 @@ class Core
                     $controller->Views($searchValue['to'], '');
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
-                        $controller->Views($searchValue['to'], '');
+                        $controller->Views($searchValue['to'], $paramData);
                     } else {
                         $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
                     }
@@ -119,17 +128,16 @@ class Core
                 $get_only_Controller_Name = $request_controller[0];
                 $get_only_Method_Name = $request_controller[1];
 
-
                 // Checking HTTP Method
                 if (!$searchValue['method']) { 
                     $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
                     $classNameController = new $className();
-                    $classNameController->$get_only_Method_Name();
+                    $classNameController->$get_only_Method_Name($paramData);
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
                         $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
                         $classNameController = new $className();
-                        $classNameController->$get_only_Method_Name();
+                        $classNameController->$get_only_Method_Name($paramData);
                     } else {
                         $controller->error500( "Error " . $searchValue['url'] . " url is " . strtoupper($searchValue['method']) . ' HTTP Method');
                     }
@@ -151,12 +159,10 @@ class Core
                     }
                 } 
             }
-
-          } else {
-
-        // Jika URL tidak tersedia maka 404 Error
             
-            $controller->error404();
+          } else {
+              // Jika URL tidak tersedia maka 404 Error
+                $controller->error404();
           }
     }
 
