@@ -24,18 +24,6 @@ $route = [
     ['url' => "logout", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@logout',],
     ['url' => "home",'type' => 'controller','to' => 'Auth\homeController@home',],
 
-	[
-        'url' => "z",
-        'type' => 'url',
-        'method' => 'get', // GET AND POST only
-        'to' => 'www.google.com'
-    ],
-    [
-        'url' => "print",
-        'type' => 'print',
-        //'method' => "post", // if you need, you can remove this line
-        'to' => 'Testing Only'
-    ],
     [
         'url' => "fb",
         'type' => '', // URL Type not declared,
@@ -44,19 +32,8 @@ $route = [
     ],
     [
         'url' => "", // Home (main index.php file)
-        'type' => 'view',
-        'to' => 'index'
-    ],
-
-    [
-        'url' => "test-controller-pass-hash",
         'type' => 'controller',
-        'to' => 'indexController@password_hash'
-    ],
-    [
-        'url' => "json-sample",
-        'type' => 'json',
-        'from' => 'https://jsonplaceholder.typicode.com/todos/1',
+        'to' => 'indexController@crud'
     ],
     
 ];
