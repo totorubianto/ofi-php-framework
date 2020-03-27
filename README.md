@@ -21,3 +21,11 @@
         Nur Khofifah as Documentation Designer - <a href="mailto:nurkhofifah2699@gmail.com">nurkhofifah2699@gmail.com </a>
     </li>
 </ul>
+
+### Project Testing Example
+
+<ul>
+    <li> <a href="https://github.com/teguh02/ofi-php-framework/tree/Testing_fetch_API_Data">Testing_fetch_API_Data</a> </li>
+    <li> <a href="https://github.com/teguh02/ofi-php-framework/tree/Testing_JSON_Response"> Testing_JSON_Response</a> </li>
+    <li> <a href="https://github.com/teguh02/ofi-php-framework/tree/CRUD_Testing">CRUD_Testing </a>
+</ul>
