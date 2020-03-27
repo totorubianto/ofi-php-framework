@@ -32,7 +32,7 @@ $route = [
     ],
     [
         'url' => "", // Home (main index.php file)
-        'type' => 'controller',
-        'to' => 'indexController@json'
+        'type' => 'json',
+        'from' => 'https://api.kawalcorona.com'
     ],
 ];
