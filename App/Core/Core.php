@@ -16,17 +16,22 @@ class Core
 
     public function run()
     {
-        if(strpos($this->project_index_path, PROJECTDIRNAME) !== false) {
-            $this->project_index_path = str_replace('/' . PROJECTDIRNAME, '', $this->project_index_path);
-        }
         $this->route();
+        //echo $this->project_index_path;
     }
 
     function searchByValue($id, $array) {
         foreach ($array as $key => $val) {
-            if(strpos($id, $val['url']) !== false) {
+            // Jika Request URI sama dengan / 
+            // dan url kosong ditemukan maka akan dialihkan ke index
+            if($this->project_index_path == '/' && $val['url'] == '') {
                 $resultSet = $val;  
-                return $resultSet;
+                    return $resultSet;
+            } else {
+                if(strpos($id, $val['url']) !== false) {
+                    $resultSet = $val;  
+                    return $resultSet;
+                }
             }
         }
         return null;

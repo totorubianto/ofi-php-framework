@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $status ?> Error - <?php echo PROJECTNAME ?></title>
-    <link rel="stylesheet" type="text/css" href=" /assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo PROJECTURL ?>/assets/css/bootstrap.min.css">
 
     <style>
         body {
