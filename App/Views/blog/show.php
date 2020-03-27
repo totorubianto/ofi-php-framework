@@ -14,5 +14,16 @@
             <br><br>
             <?php echo $d['isi'] ?>
         </div>
+
+        <br><br><br>
+
+        <div>
+            <form action="#" method="post">
+                <a href="#">
+                    <button class="btn btn-info">Edit</button>
+                </a>
+                <button class="btn btn-danger" type="submit">Hapus</button>
+            </form>
+        </div>
     </div>
 </div>

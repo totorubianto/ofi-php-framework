@@ -23,4 +23,14 @@ class indexController extends Controller
 		$data = DB::where('blog', ['slug', $id]);
 		$this->loadTemplate('blog/show', ['d' => $data]);
 	}
+
+	public function save()
+	{
+		$judul = $artikel['judul'] = helper::request('judul');
+		$artikel['isi'] = helper::request('isi');
+		$artikel['slug'] = helper::slug($judul);
+
+		$this->DB->insert($artikel, 'blog');
+		$this->flash->success('Sukses menambah data artikel', '/');	
+	}
 }
