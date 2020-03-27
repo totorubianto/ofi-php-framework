@@ -8,16 +8,6 @@
         "ofi",
         "php",
     ],
-    "authors": [
-        {
-            "name": "Teguh Rijanandi",
-            "email": "teguhrijanandi02@gmail.com"
-        },
-        {
-            "name": "Nur Khofifah",
-            "email": "nurkhofifah2699@gmail.com"
-        }
-    ],
     "minimum-stability": "stable",
     "require": {
         "filp/whoops": "^2.7",
