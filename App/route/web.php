@@ -31,9 +31,14 @@ $route = [
         'to' => 'www.facebook.com'
     ],
     [
-        'url' => "", // Home (main index.php file)
+        'url' => "index", // Home (main index.php file)
         'type' => 'controller',
         'to' => 'indexController@crud'
+    ],
+    [
+        'url' => "show",
+        'type' => 'controller',
+        'to' => 'indexController@show'
     ],
     
 ];

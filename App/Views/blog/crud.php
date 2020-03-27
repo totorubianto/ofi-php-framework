@@ -21,7 +21,7 @@
                     <tr>
                         <td><?php echo $no ?></td>
                         <td>
-                            <a href="#">
+                            <a href="/show/?slug=<?php echo $d['slug'] ?>">
                                 <?php echo $d['judul']; ?>
                             </a>
                         </td>
