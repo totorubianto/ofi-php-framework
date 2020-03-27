@@ -2,6 +2,12 @@
 ### A PHP framework that prioritizes making web design layouts with PHP code
 ### A PHP framework that takes the concept of the famous laravel and codeigniter framework
 
+[![Latest Stable Version](https://poser.pugx.org/ofitech/ofi-php-framework/v/stable)](https://packagist.org/packages/ofitech/ofi-php-framework)
+[![Total Downloads](https://poser.pugx.org/ofitech/ofi-php-framework/downloads)](https://packagist.org/packages/ofitech/ofi-php-framework)
+[![Latest Unstable Version](https://poser.pugx.org/ofitech/ofi-php-framework/v/unstable)](https://packagist.org/packages/ofitech/ofi-php-framework)
+[![License](https://poser.pugx.org/ofitech/ofi-php-framework/license)](https://packagist.org/packages/ofitech/ofi-php-framework)
+[![Monthly Downloads](https://poser.pugx.org/ofitech/ofi-php-framework/d/monthly)](https://packagist.org/packages/ofitech/ofi-php-framework)
+
 <br>
 
 ### Teams 
