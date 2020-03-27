@@ -1,4 +1,0 @@
-<?php echo BASE ?>/index/galeri
-
-Dokumentasi flash message
-https://mikeeverhart.net/php-flash-messages/

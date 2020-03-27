@@ -17,12 +17,12 @@
 
 $route = [
     // Auth Route Declaration
-    ['url' => "login",'type' => 'controller','to' => 'Auth\authController@login',],
-    ['url' => "register",'type' => 'controller','to' => 'Auth\authController@register',],
-    ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@register_save',],
-    ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@login_detect',],
-    ['url' => "logout", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@logout',],
-    ['url' => "home",'type' => 'controller','to' => 'Auth\homeController@home',],
+    // ['url' => "login",'type' => 'controller','to' => 'Auth\authController@login',],
+    // ['url' => "register",'type' => 'controller','to' => 'Auth\authController@register',],
+    // ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@register_save',],
+    // ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@login_detect',],
+    // ['url' => "logout", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@logout',],
+    // ['url' => "home",'type' => 'controller','to' => 'Auth\homeController@home',],
 
     [
         'url' => "fb",
@@ -33,34 +33,6 @@ $route = [
     [
         'url' => "", // Home (main index.php file)
         'type' => 'controller',
-        'to' => 'indexController@crud'
+        'to' => 'indexController@json'
     ],
-    [
-        'url' => "show",
-        'type' => 'controller',
-        'to' => 'indexController@show'
-    ],
-    [
-        'url' => "save",
-        'type' => 'controller',
-        'to' => 'indexController@save'
-    ],
-    [
-        'url' => "edit",
-        'type' => 'controller',
-        'to' => 'indexController@edit'
-    ],
-    [
-        'url' => "delete",
-        'method' => 'POST',
-        'type' => 'controller',
-        'to' => 'indexController@delete'
-    ],
-    [
-        'url' => "update",
-        'method' => 'POST',
-        'type' => 'controller',
-        'to' => 'indexController@update'
-    ],
-    
 ];

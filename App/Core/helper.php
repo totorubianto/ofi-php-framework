@@ -94,6 +94,12 @@ class helper
           
     }
 
+    public static function toJson($data)
+    {
+        header('Content-Type: application/json');
+        return json_encode($data);
+    }
+
     public static function auth($datas)
     {
         if(!$_SESSION['login_user']) {
