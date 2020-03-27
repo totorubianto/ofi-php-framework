@@ -42,11 +42,19 @@ class DB extends Model {
     }
 
     // Untuk menampilkan semua data by array
-    public static function all($table)
+    // hanya mendukung query order by
+    
+    public static function all($table, $query)
     {
         $sql = "SELECT * FROM $table ";
-        $result = parent::connect($sql);
-        return Model::fetchRow($result);
+        
+        if($query) {
+            $order_by_key = $query['ORDER BY'][0];
+            $order_by_val = $query['ORDER BY'][1];
+            $sql .= 'ORDER BY ' . $order_by_key . ' ' . $order_by_val;
+        }
+
+        return $connect = parent::connect($sql);        
     }
 
     // menampilkan data berdasarkan id by array
