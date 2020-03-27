@@ -33,4 +33,11 @@ class indexController extends Controller
 		$this->DB->insert($artikel, 'blog');
 		$this->flash->success('Sukses menambah data artikel', '/');	
 	}
+
+	public function delete()
+	{
+		$id = helper::request('id');
+		$this->DB->delete('blog', $id);
+		$this->flash->success('Sukses menghapus data artikel', '/');
+	}
 }

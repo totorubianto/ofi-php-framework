@@ -75,9 +75,10 @@ class DB extends Model {
     }
 
     // Untuk menghapus data berdasarkan id
-    public static function delete($id)
+    public function delete($table, $id)
     {
-        # code...
+        $sql = "DELETE FROM $table WHERE id = $id";
+        return $this->db->query($sql);
     }
 
     public function get_user_login($val)

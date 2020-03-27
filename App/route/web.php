@@ -45,5 +45,11 @@ $route = [
         'type' => 'controller',
         'to' => 'indexController@save'
     ],
+    [
+        'url' => "delete",
+        'method' => 'POST',
+        'type' => 'controller',
+        'to' => 'indexController@delete'
+    ],
     
 ];

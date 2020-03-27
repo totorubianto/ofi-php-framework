@@ -18,7 +18,8 @@
         <br><br><br>
 
         <div>
-            <form action="#" method="post">
+            <form action="/delete" method="post">
+                <input type="hidden" value="<?php echo $d['id'] ?>" name="id">
                 <a href="#">
                     <button class="btn btn-info">Edit</button>
                 </a>
