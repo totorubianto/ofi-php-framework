@@ -1,17 +1,12 @@
 {
     "name": "ofitech/ofi-php-framework",
     "description": "A Simple PHP Framework by ofitech",
-    "type": "package",
+    "type": "project",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Teguh Rijanandi",
-            "email": "teguhrijanandi02@gmail.com"
-        },
-        {
-            "name": "Nur Khofifah",
-            "email": "nurkhofifah2699@gmail.com"
-        },
+    "keywords": [
+        "framework",
+        "ofi",
+        "php"
     ],
     "minimum-stability": "stable",
     "require": {
