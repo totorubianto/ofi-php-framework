@@ -43,7 +43,7 @@ class DB extends Model {
 
     // Untuk menampilkan semua data by array
     // hanya mendukung query order by
-    
+
     public static function all($table, $query)
     {
         $sql = "SELECT * FROM $table ";
@@ -58,9 +58,14 @@ class DB extends Model {
     }
 
     // menampilkan data berdasarkan id by array
-    public static function where($data)
+    public static function where($table, $data)
     {
-        # code...
+        $id = $data[0];
+        $id_val = $data[1];
+
+        $sql = "SELECT * FROM $table WHERE $id = '" . $id_val . "'";
+        $results = parent::connect($sql);
+        return $results[0];
     }
 
     // Untuk update data berdasarkan id
