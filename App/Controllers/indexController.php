@@ -40,4 +40,28 @@ class indexController extends Controller
 		$this->DB->delete('blog', $id);
 		$this->flash->success('Sukses menghapus data artikel', '/');
 	}
+
+	public function edit()
+	{
+		$id = helper::request('id');
+		$data = DB::where('blog', ['id', $id]);
+		$this->loadTemplate('blog/edit', ['b' => $data]);
+	}
+
+	public function update()
+	{
+		$id = helper::request('id');
+		$judul = $artikel['judul'] = helper::request('judul');
+		$artikel['isi'] = helper::request('isi');
+		$artikel['slug'] = helper::slug($judul);
+
+		// blog is name of your table
+		$this->DB->update('blog', [
+			'where' 	=> 'id', // where id
+			'value' => $id // value form id
+		], $artikel); // new data from article
+
+		$this->flash->success('Sukses memperbarui data artikel', '/');
+	}
+	
 }

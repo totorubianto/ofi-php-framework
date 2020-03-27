@@ -18,11 +18,11 @@
         <br><br><br>
 
         <div>
-            <form action="/delete" method="post">
-                <input type="hidden" value="<?php echo $d['id'] ?>" name="id">
-                <a href="#">
-                    <button class="btn btn-info">Edit</button>
+                <a href="/edit/?id=<?php echo $d['id'] ?>">
+                    <button class="btn d-inline btn-info">Edit</button>
                 </a>
+            <form action="/delete" class="d-inline" method="post">
+                <input type="hidden" value="<?php echo $d['id'] ?>" name="id">
                 <button class="btn btn-danger" type="submit">Hapus</button>
             </form>
         </div>

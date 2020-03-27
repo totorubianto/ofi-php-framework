@@ -69,9 +69,22 @@ class DB extends Model {
     }
 
     // Untuk update data berdasarkan id
-    public static function update($id, $data)
+    public function update($table, $id, $data)
     {
-        # code...
+        $id_key = $id['where'];
+        $id_val = $id['value'];
+
+        // Menentukan kolom apa saja yang ingin diinputkan 
+        foreach($data as $key=>$val)
+        {
+          $value .= "$key = '$val',";
+        }
+
+        // Menghapus tanda koma pada posisi paling kanan
+        $query = rtrim($value, ",");
+
+        $sql = "UPDATE $table SET $query WHERE $id_key = '$id_val'";
+        return $result = $this->db->query($sql);
     }
 
     // Untuk menghapus data berdasarkan id
