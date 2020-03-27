@@ -11,20 +11,20 @@ class Core
     public function __construct()
     {
         $this->middleware();
+        $this->project_index_path = $_SERVER["REQUEST_URI"];
     }
 
     public function run()
     {
+        if(strpos($this->project_index_path, PROJECTDIRNAME) !== false) {
+            $this->project_index_path = str_replace('/' . PROJECTDIRNAME, '', $this->project_index_path);
+        }
         $this->route();
     }
 
     function searchByValue($id, $array) {
         foreach ($array as $key => $val) {
             if(strpos($id, $val['url']) !== false) {
-                $resultSet = $val;  
-                   return $resultSet;
-
-            } elseif($val['url'] == '') {
                 $resultSet = $val;  
                 return $resultSet;
             }
@@ -41,7 +41,7 @@ class Core
     {
         include 'App\route\web.php';
 
-        $get_url = $_SERVER["REQUEST_URI"];
+        $get_url = $this->project_index_path;
         
         // Konvert string ke array
         $url_array = str_split($get_url);

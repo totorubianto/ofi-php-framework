@@ -1,16 +1,24 @@
 <?php 
+/**
+ * OFI PHP Framework 
+ * Define project name and environment settings
+ */
 
-global $config;
-
-// Database connection configuration
-$config['host']='localhost';
-$config['dbname']='lks';
-$config['user']='root';
-$config['password']='';
-
-// Define project name and environment settings
+ // Your Project Name
 define('PROJECTNAME', 'OFI Framework');
+
+// Your Project Directory Name
+define('PROJECTDIRNAME', 'lks');
+
+ // Your Project Environment
 define('ENVIRONMENT', 'development');
+
+
+// Database MYSQLI connection configuration
+$config['host']         = 'localhost';
+$config['dbname']       = 'lks';
+$config['user']         = 'root';
+$config['password']     = '';
 
 /**
  * Define SEO tag for your website

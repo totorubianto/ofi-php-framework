@@ -8,6 +8,7 @@
  */
 
 session_start();
+global $config;
 require 'config.php';
 require 'vendor/autoload.php';
 
