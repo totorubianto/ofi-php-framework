@@ -1,6 +1,6 @@
 {
     "name": "ofitech/ofi-php-framework",
-    "description": "A Simple PHP Framework by ofitech",
+    "description": "A PHP framework that prioritizes making web design layouts with PHP code",
     "type": "project",
     "license": "MIT",
     "keywords": [
@@ -9,6 +9,10 @@
         "php"
     ],
     "authors": [
+        {
+            "name": "Fabriyan Fandi Dwi Imaniawan",
+            "email": "imaniawanid@gmail.com"
+        },
         {
             "name": "Teguh Rijanandi",
             "email": "teguhrijanandi02@gmail.com"
