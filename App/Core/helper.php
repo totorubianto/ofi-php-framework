@@ -96,6 +96,7 @@ class helper
 
     public static function toJson($data)
     {
+        // Set content type menjadi application/json
         header('Content-Type: application/json');
         return json_encode($data);
     }
