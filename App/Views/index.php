@@ -1,37 +1,29 @@
 <?php 
-    // Default all required input
-    $design->form('post', [
-        'url' => '#', // Up to you Where you want to post data
-        'submit' => 'Simpan', // value of submit button
-        'input' => [ // contains ofi php framework input script
+    $design->header(array(
+        'title' => true,
+        'theme' => 'white', // white or dark
+        'float' => 'right',
+        'menu' => [
             [
-                'name' => 'Email',
-                'type' => 'email', // null, text, password, email and etc
-                'required' => 'no', // optional, you can remove this line
+                'name' => "Login",
+                'url' => "/login"
             ],
 
             [
-                'name' => 'Jenis Kelamin', // jenis kelamin (gender)
-                'input' => 'select',
-                'required' => 'yes',
-                'option' => [ // option can be use in select input only
-                    [
-                        'value' => 'l', // value of option tag
-                        'text' => "laki laki" // text in option tag
-                    ],
-                    [
-                        'value' => 'p',
-                        'text' => "Perempuan",
-                    ]
-                ]
-            ],
-
-            [
-                'name' => 'alamat',
-                'input' => 'textarea', // input, textarea, select
-                'required' => 'no', // yes or no
+                'name' => "Register",
+                'url' => '/register'
             ]
-        ],
-    ]);
-    
+        ],        
+    ));  
 ?>
+
+<div class="container-fluid text-center d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <div class="container">
+        <h1>Hello World!</h1>
+        <h3>Welcome in OFI PHP Framework, I Hope You Can Enjoy This Project</h3>
+
+        <br>
+
+        <a href="https://github.com/teguh02/ofi-php-framework">Open Github</a>
+    </div>
+</div>
