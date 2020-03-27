@@ -6,7 +6,17 @@
     "keywords": [
         "framework",
         "ofi",
-        "php",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Teguh Rijanandi",
+            "email": "teguhrijanandi02@gmail.com"
+        },
+        {
+            "name": "Nur Khofifah",
+            "email": "nurkhofifah2699@gmail.com"
+        }
     ],
     "minimum-stability": "stable",
     "require": {
