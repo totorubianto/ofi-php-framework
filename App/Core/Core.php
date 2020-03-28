@@ -44,7 +44,7 @@ class Core
 
     public function route()
     {
-        include 'App\route\web.php';
+        include 'App/route/web.php';
 
         $get_url = $this->project_index_path;
         

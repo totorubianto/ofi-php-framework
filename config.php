@@ -7,9 +7,6 @@
  // Your Project Name
 define('PROJECTNAME', 'OFI Framework');
 
-// Your Project URL
-define('PROJECTURL', 'http://localhost/lks/');
-
  // Your Project Environment
 define('ENVIRONMENT', 'development');
 

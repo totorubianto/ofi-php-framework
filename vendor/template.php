@@ -16,9 +16,9 @@
 	<meta name="author" content="<?php echo AUTHOR ?>">
 	<meta name="google-site-verification" content="<?php echo GoogleSiteVerification ?>" />
 	
-		<link rel="stylesheet" type="text/css" href="<?php echo PROJECTURL ?>/assets/css/bootstrap.min.css">
-		<script src="<?php echo PROJECTURL ?>/assets/js/jquery.min.js"></script>
-		<script src="<?php echo PROJECTURL ?>/assets/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo BASE ?>/assets/css/bootstrap.min.css">
+		<script src="<?php echo BASE ?>/assets/js/jquery.min.js"></script>
+		<script src="<?php echo BASE ?>/assets/js/bootstrap.min.js"></script>
 </head>
 <body>
 
