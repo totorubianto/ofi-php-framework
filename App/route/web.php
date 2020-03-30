@@ -37,9 +37,4 @@ $route = [
         'type' => 'controller',
         'to' => 'indexController@index'
     ],
-    [
-        'url' => "sendMail",
-        'type' => 'controller',
-        'to' => 'indexController@sendMail'
-    ],
 ];

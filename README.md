@@ -31,4 +31,7 @@
     <li> <a href='https://github.com/teguh02/ofi-php-framework/tree/Testing_make_a_collapse_with_PHP'>Testing_make_a_collapse_with_PHP</a> </li>
     <li> <a href="https://github.com/teguh02/ofi-php-framework/tree/Testing_make_a_navigation_design_with_PHP">Testing_make_a_navigation_design_with_PHP</a> </li>
     <li> <a href="https://github.com/teguh02/ofi-php-framework/tree/Testing_make_a_form_Group_with_PHP__">Testing_make_a_form_Group_with_PHP</a> </li>
+    <li>
+        <a href="https://github.com/teguh02/ofi-php-framework/releases/tag/Example_OFI_PHP_Send_Email">Example_OFI_PHP_Send_Email</a>
+    </li>
 </ul>
