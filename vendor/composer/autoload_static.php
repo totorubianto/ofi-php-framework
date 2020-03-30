@@ -6,29 +6,16 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit94043ae1bfc5ad1c0e568d555cd7b7b3
 {
-    public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
             'Whoops\\' => 7,
         ),
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Contracts\\Translation\\' => 30,
-            'Symfony\\Component\\Translation\\' => 30,
-        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Plasticbrain\\FlashMessages\\' => 27,
-        ),
-        'C' => 
-        array (
-            'Carbon\\' => 7,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
     );
 
@@ -36,18 +23,6 @@ class ComposerStaticInit94043ae1bfc5ad1c0e568d555cd7b7b3
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
-        ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Contracts\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation-contracts',
-        ),
-        'Symfony\\Component\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Psr\\Log\\' => 
         array (
@@ -57,9 +32,9 @@ class ComposerStaticInit94043ae1bfc5ad1c0e568d555cd7b7b3
         array (
             0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
         ),
-        'Carbon\\' => 
+        'PHPMailer\\PHPMailer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
     );
 

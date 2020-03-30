@@ -25,8 +25,8 @@
     "minimum-stability": "stable",
     "require": {
         "filp/whoops": "^2.7",
-        "nesbot/carbon": "^2.31",
-        "plasticbrain/php-flash-messages": "^1.0"
+        "plasticbrain/php-flash-messages": "^1.0",
+        "phpmailer/phpmailer": "^6.1"
     },
     "scripts" : {
         "server" : "php -S localhost:9000"

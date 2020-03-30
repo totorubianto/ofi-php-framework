@@ -10,7 +10,6 @@ define('PROJECTNAME', 'OFI Framework');
  // Your Project Environment
 define('ENVIRONMENT', 'development');
 
-
 // Database MYSQLI connection configuration
 $config['host']         = 'localhost';
 $config['dbname']       = 'lks';
@@ -37,5 +36,33 @@ define('AUTHOR', 'Teguh Rijanandi');
 // Separate with comma
 define('KEYWORDS', 'Framework, PHP, Backend'); 
 define('GoogleSiteVerification', '');
+
+/**
+ * Define your sites mailer
+ * This is default config for gmail
+ * Default Mailer is use SMTP
+ *
+ * Tips!
+ * First you must turn on Access for less secure apps in
+ * https://myaccount.google.com/lesssecureapps
+ * 
+ * And then you can change this gmail username and password
+ * with your's gmail account
+ * 
+ * Enable SMTP debugging
+ * 0 = off (for production use)
+ * 1 = client messages
+ * 2 = client and server messages
+ */
+
+define('SMTPSecure', 'tls');
+define('Host', 'smtp.gmail.com');
+define('Port', 587);
+define('GmailUsername', 'hisaon4@gmail.com');
+define('GmailPassword', 'nandafa.');
+define('SMTPDebug', 0);
+define('senderEmail', 'system@ofiFramework.com');
+define('senderName', 'OFI Framework Mailing System');
+
 
 

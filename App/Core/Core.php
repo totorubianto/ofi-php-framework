@@ -14,11 +14,21 @@ class Core
         $this->project_index_path = $_SERVER["REQUEST_URI"];
     }
 
+    /**
+     * Method Run
+     * This method will be run for the 
+     * first time while the program is running
+     */
+
     public function run()
     {
         $this->route();
-        //echo $this->project_index_path;
     }
+
+    /**
+     * Method searchByValue
+     * For search route in array data
+     */
 
     function searchByValue($id, $array) {
         foreach ($array as $key => $val) {
@@ -36,6 +46,12 @@ class Core
         }
         return null;
      }
+
+     /**
+      * Method Middleware 
+      * for register your middleware in
+      * OFI PHP Framewrok system
+      */
 
      public function middleware()
      {
