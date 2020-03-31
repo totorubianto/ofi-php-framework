@@ -1,0 +1,39 @@
+{
+    "name": "ofitech/ofi-php-framework",
+    "description": "A PHP framework that prioritizes making web design layouts with PHP code",
+    "type": "project",
+    "version": "1.1",
+    "license": "MIT",
+    "keywords": [
+        "framework",
+        "ofi",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Fabriyan Fandi Dwi Imaniawan",
+            "email": "imaniawanid@gmail.com"
+        },
+        {
+            "name": "Teguh Rijanandi",
+            "email": "teguhrijanandi02@gmail.com"
+        },
+        {
+            "name": "Nur Khofifah",
+            "email": "nurkhofifah2699@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "filp/whoops": "^2.7",
+        "plasticbrain/php-flash-messages": "^1.0",
+        "phpmailer/phpmailer": "^6.1"
+    },
+    "scripts" : {
+        "server" : "php -S localhost:9000"
+    },
+
+    "config": {
+        "process-timeout": 0
+    }
+}
