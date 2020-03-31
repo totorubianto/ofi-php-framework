@@ -1,20 +1,20 @@
-<?php 
-    $design->header(array(
+<?php
+    $design->header([
         'title' => true,
         'theme' => 'white', // white or dark
         'float' => 'right',
-        'menu' => [
+        'menu'  => [
             [
-                'name' => "Login",
-                'url' => "/login"
+                'name' => 'Login',
+                'url'  => '/login',
             ],
 
             [
-                'name' => "Register",
-                'url' => '/register'
-            ]
-        ],        
-    ));  
+                'name' => 'Register',
+                'url'  => '/register',
+            ],
+        ],
+    ]);
 ?>
 
 <div class="container-fluid text-center d-flex justify-content-center align-items-center" style="height: 90vh;">

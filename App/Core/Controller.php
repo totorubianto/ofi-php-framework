@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+
 use App\Designs\design;
 use App\Models\DB;
 
@@ -10,25 +11,25 @@ class Controller
 
     public function __construct()
     {
-        $this->DB = new DB;
-        $this->db = new DB;
+        $this->DB = new DB();
+        $this->db = new DB();
         $this->flash = new \Plasticbrain\FlashMessages\FlashMessages();
     }
 
     public function error404()
-    {   
+    {
         $viewData['status'] = 404;
-        $viewData['title'] = "Not Found";
-        $viewData['msg'] = "Sorry but the page you are looking for does not exist, have been removed.";
+        $viewData['title'] = 'Not Found';
+        $viewData['msg'] = 'Sorry but the page you are looking for does not exist, have been removed.';
 
         extract($viewData);
         include 'App/Views/error_404.php';
     }
 
     public function error500($pesan)
-    {   
+    {
         $viewData['status'] = 500;
-        $viewData['title'] = "Server Error";
+        $viewData['title'] = 'Server Error';
         $viewData['msg'] = $pesan;
 
         extract($viewData);
@@ -36,39 +37,38 @@ class Controller
     }
 
     public function Views($viewName)
-    {   
-        if (ENVIRONMENT !=  'production') {
+    {
+        if (ENVIRONMENT != 'production') {
             require 'vendor/autoload.php';
-            $whoops = new \Whoops\Run;
-            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+            $whoops = new \Whoops\Run();
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
             $whoops->register();
         } else {
-            $this->error500("There a something error, please turn on development mode to see  error message");
+            $this->error500('There a something error, please turn on development mode to see  error message');
         }
-        
+
         extract($viewData = []);
         include 'vendor/template.php';
     }
 
-    public function loadView($viewName, $viewData = array())
-    {   
-        extract($viewData); 
-        include 'App/Views/' . $viewName . '.php';
+    public function loadView($viewName, $viewData = [])
+    {
+        extract($viewData);
+        include 'App/Views/'.$viewName.'.php';
     }
 
-    public function loadTemplate($viewName, $viewData = array())
+    public function loadTemplate($viewName, $viewData = [])
     {
         extract($viewData);
         include 'vendor/template.php';
     }
+
     public function loadViewInTemplate($viewName, $viewData)
-    {   
+    {
         $flash = new \Plasticbrain\FlashMessages\FlashMessages();
         $helper = new \App\Core\helper();
         $design = new design();
         extract($viewData);
-        include 'App/Views/' . $viewName . '.php';
+        include 'App/Views/'.$viewName.'.php';
     }
-
 }
-

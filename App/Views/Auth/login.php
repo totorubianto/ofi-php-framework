@@ -13,25 +13,25 @@
 
 <div class="container-fluid tengah">
     <div class="container col-md-4">
-        <?php 
+        <?php
             $flash->display();
         ?>
         <div class="card">
             <div class="card-body">
                 <h5 class="mb-3">Login Page</h5>
 
-                <?php 
+                <?php
                     $design->form('post', [
-                        'url' => '/login-detect',
+                        'url'    => '/login-detect',
                         'submit' => 'Login',
-                        'input' => [
+                        'input'  => [
                             [
                                 'name' => 'username or email',
-                            ],    
+                            ],
                             [
                                 'name' => 'password',
                                 'type' => 'password',
-                            ]
+                            ],
                         ],
                     ]);
                 ?>

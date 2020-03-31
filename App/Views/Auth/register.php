@@ -11,7 +11,7 @@
 
 <div class="container-fluid tengah">
     <div class="container col-md-4">
-        <?php 
+        <?php
             $flash->display();
         ?>
 
@@ -19,25 +19,25 @@
             <div class="card-body">
                 <h5 class="mb-3">Register Page</h5>
 
-                <?php 
+                <?php
                     $design->form('post', [
-                        'url' => '/register-save', // where do you want to go
+                        'url'    => '/register-save', // where do you want to go
                         'submit' => 'Register', // button value
-                        'input' => [ // All of input content
+                        'input'  => [ // All of input content
                             [
                                 'name' => 'Full name',
                             ],
                             [
                                 'name' => 'username',
-                            ],    
+                            ],
                             [
                                 'name' => 'email',
-                                'type' => 'email'
-                            ],    
+                                'type' => 'email',
+                            ],
                             [
                                 'name' => 'password',
                                 'type' => 'password',
-                            ]
+                            ],
                         ],
                     ]);
                 ?>

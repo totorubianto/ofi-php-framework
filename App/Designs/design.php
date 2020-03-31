@@ -29,5 +29,3 @@ class design
         include 'App/Designs/template/formGroup.php';
     }
 }
-
-?>

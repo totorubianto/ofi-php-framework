@@ -3,20 +3,23 @@
 namespace App\Core;
 
 use mysqli;
+
 class Model
 {
     public $db;
-    function __construct()
+
+    public function __construct()
     {
         global $config;
         $this->db = new mysqli($config['host'], $config['user'], $config['password'], $config['dbname']);
     }
 
     public function connect($sql)
-    {   
+    {
         global $config;
         $koneksi = new mysqli($config['host'], $config['user'], $config['password'], $config['dbname']);
         $hasil = $koneksi->query($sql);
+
         return $hasil->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -30,4 +33,3 @@ class Model
         return mysqli_fetch_assoc($sql);
     }
 }
-
