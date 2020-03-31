@@ -155,12 +155,12 @@ class Core
 
                 // Checking HTTP Method
                 if (!$searchValue['method']) { 
-                    $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
+                    $className = '\\App\\Controllers\\' . $get_only_Controller_Name;
                     $classNameController = new $className();
                     $classNameController->$get_only_Method_Name();
                 } else {
                     if ($_SERVER['REQUEST_METHOD'] === strtoupper($searchValue['method'])) {
-                        $className = '\\APP\\Controllers\\' . $get_only_Controller_Name;
+                        $className = '\\App\\Controllers\\' . $get_only_Controller_Name;
                         $classNameController = new $className();
                         $classNameController->$get_only_Method_Name();
                     } else {

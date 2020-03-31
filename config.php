@@ -10,6 +10,9 @@ define('PROJECTNAME', 'OFI Framework');
  // Your Project Environment
 define('ENVIRONMENT', 'development');
 
+// Your Project URL
+define('PROJECTURL', '');
+
 // Database MYSQLI connection configuration
 $config['host']         = 'localhost';
 $config['dbname']       = 'lks';
@@ -58,8 +61,8 @@ define('GoogleSiteVerification', '');
 define('SMTPSecure', 'tls');
 define('Host', 'smtp.gmail.com');
 define('Port', 587);
-define('GmailUsername', 'hisaon4@gmail.com');
-define('GmailPassword', 'nandafa.');
+define('GmailUsername', 'youremail@gmail.com');
+define('GmailPassword', 'yourpass');
 define('SMTPDebug', 0);
 define('senderEmail', 'system@ofiFramework.com');
 define('senderName', 'OFI Framework Mailing System');
