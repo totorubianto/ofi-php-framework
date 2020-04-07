@@ -1,5 +1,8 @@
 <?php 
 
+use App\Core\Controller;
+use App\Core\helper;
+
 class exampleUploadCode
 {
     // Auto detect folder exist

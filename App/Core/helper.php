@@ -232,6 +232,50 @@ class helper
         return $results;
     }
 
+    public function scraper($data)
+    {
+        include 'webScraper.php';
+
+        $keyword = $data['keyword'];
+        $url_encode = urlencode($request);
+        $sumber = $data['source'];
+
+        // Proses pencarian berdasarkan sumber
+        for($i = 0; $i < count($sumber); $i++ ) {
+            $html = file_get_html($sumber[$i]);
+            
+            $urut_artikel = 1;
+            foreach($html->find('a') as $element) {
+                // Hanya mencetak yang sama dengan keyword saja
+                if (strpos($element->href, $keyword) !== false || strpos($element->href, $url_encode) !== false) {
+                    $hasilnya['article'][$urut_artikel]['title'] =  ucwords(str_replace('search', '', str_replace('www', '', preg_replace('/[0-9]+/', '', str_replace('read', '', str_replace('post', '', str_replace('html', '', str_replace('-', ' ', str_replace('http', '', preg_replace('/[^A-Za-z0-9\-]/', ' ', str_replace($sumber[$i], '', $element->href)))))))))));
+                    $hasilnya['article'][$urut_artikel]['url'] = $element->href;
+                    
+                    $urut_artikel++;
+                }
+            }
+            
+            // proses mencari gambar
+            
+            $urut_gb = 1;
+            foreach($html->find('img') as $gb) {
+                
+                // Hanya mencetak yang sama dengan keyword saja
+                if (strpos($gb->src, $keyword) !== false || strpos($gb->src, $url_encode) !== false) {
+                    $hasilnya['image'][$urut_gb]['src'] = $gb->src;
+                    
+                    $urut_gb++;
+                }
+            }
+        }
+        
+        $ofi = [
+                'results' => $hasilnya
+            ];
+            
+        echo helper::toJson($ofi);
+    }
+
     public static function sendEmail($data)
     {
         //SMTP needs accurate times, and the PHP time zone MUST be set
