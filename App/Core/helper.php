@@ -135,6 +135,85 @@ class helper
     }
 
     /**
+     * Method upload
+     * Help to upload a file
+     */
+
+    public static function upload($data)
+    {
+        include 'mimes.php';
+        // $data['form'] adalah nama form input yang menjadi acuan
+        // $data['folder'] adalah nama folder tujuan untuk menjadi penyimpanan
+
+        $ekstensi_diperbolehkan	= $mimes;
+        $nama = $_FILES[$data['form']]['name'];
+        $x = explode('.', $nama);
+        $ekstensi = strtolower(end($x));
+        $ukuran	= $_FILES[$data['form']]['size'];
+        $file_tmp = $_FILES[$data['form']]['tmp_name'];	
+        
+            if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+                if($ukuran <= MAXUPLOAD){			
+
+                    // Otomatis membuat direktori baru jika direktori yang diminta tidak ditemukan
+
+                    $dir = PROJECTPATH . '/assets/upload/' . $data['folder'];
+                    if (!file_exists( $dir ) && !is_dir($dir)) {
+                        mkdir($dir);       
+                    } 
+
+                    move_uploaded_file($file_tmp, PROJECTPATH . '/assets/upload/' . $data['folder'] . '/' . $nama);
+
+                    $bytes = $ukuran;
+
+                    if ($bytes >= 1073741824)
+                    {
+                        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+                    }
+                    elseif ($bytes >= 1048576)
+                    {
+                        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+                    }
+                    elseif ($bytes >= 1024)
+                    {
+                        $bytes = number_format($bytes / 1024, 2) . ' KB';
+                    }
+                    elseif ($bytes > 1)
+                    {
+                        $bytes = $bytes . ' bytes';
+                    }
+                    elseif ($bytes == 1)
+                    {
+                        $bytes = $bytes . ' byte';
+                    }
+                    else
+                    {
+                        $bytes = '0 bytes';
+                    }
+                    
+                    $status['status'] = 'Success';
+                    $status['filename'] = $nama;
+                    $status['filesize'] = $bytes;
+                    $status['storageLocation'] = PROJECTURL . '/assets/upload/' . $data['folder'] . '/' . $nama;
+                    return $status;
+
+                }else{
+                    $status['status'] = 'THE SIZE OF FILE IS TOO LARGE';
+                    $status['filename'] = $nama;
+                    $status['filesize'] = $bytes;
+                    $status['storageLocation'] = PROJECTURL . '/assets/upload/' . $data['folder'] . '/' . $nama;
+                    return $status;
+                }    
+            }else{
+                    $status['status'] = 'EXTENSION OF FILES IS NOT ALLOWED';
+                    $status['filename'] = $nama;
+                    $status['filesize'] = $bytes;
+                    $status['storageLocation'] = PROJECTURL . '/assets/upload/' . $data['folder'] . '/' . $nama;
+                    return $status;
+            }
+    }
+
+    /**
      * Method auth
      * is to get your auth information
      * from the database (login required to use).

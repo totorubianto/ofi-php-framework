@@ -12,7 +12,12 @@ define('PROJECTNAME', 'OFI Framework');
 define('ENVIRONMENT', 'development');
 
 // Your Project URL
-define('PROJECTURL', '');
+define('PROJECTURL', 'http://localhost:9000/');
+
+// Upload file function limiter 
+// default 1044070 = 1 mb
+define('MAXUPLOAD', 1044070);
+
 
 // Database MYSQLI connection configuration
 $config['host'] = 'localhost';
