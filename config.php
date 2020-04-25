@@ -12,7 +12,7 @@ define('PROJECTNAME', 'OFI Framework');
 define('ENVIRONMENT', 'development');
 
 // Your Project URL
-define('PROJECTURL', 'http://localhost:9000/');
+define('PROJECTURL', 'https://ofi-php-framework.herokuapp.com');
 
 // Upload file function limiter 
 // default 1044070 = 1 mb
