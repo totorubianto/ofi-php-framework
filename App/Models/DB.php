@@ -56,7 +56,7 @@ class DB extends Model
         return $connect = parent::connect($sql);
     }
 
-    // menampilkan data berdasarkan id by array
+    // menampilkan hanya satu data berdasarkan id by array
     public static function where($table, $data)
     {
         $id = $data[0];
@@ -66,6 +66,18 @@ class DB extends Model
         $results = parent::connect($sql);
 
         return $results[0];
+    }
+
+    // menampilkan semua data berdasarkan id
+    public static function whereAll($table, $data)
+    {
+        $id = $data[0];
+        $id_val = $data[1];
+
+        $sql = "SELECT * FROM $table WHERE $id = '".$id_val."'";
+        $results = parent::connect($sql);
+
+        return $results;
     }
 
     // Untuk update data berdasarkan id

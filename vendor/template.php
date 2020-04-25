@@ -24,5 +24,10 @@
 
 	<?php $this->loadViewInTemplate($viewName,$viewData) ?>
 
+	<?php 
+		if(ENVIRONMENT == 'development')
+		include PROJECTPATH . '\vendor\debuger\template.php';
+	?>
+
 </body>
 </html>
