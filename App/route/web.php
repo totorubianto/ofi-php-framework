@@ -13,7 +13,10 @@
  *    5. json        is to fetch a API URL and print to JSON format (Only support GET Method API)
  *                   For example you can use this API URL for testing
  *                   https://jsonplaceholder.typicode.com/todos/1
+ * 
+ *  Tips! If you need you can delete example route
  */
+
 $route = [
     // Auth Route Declaration
     // you can remove comment tag to turn on this route
@@ -31,9 +34,23 @@ $route = [
         // this is will showing 500 error message
         'to' => 'www.facebook.com',
     ],
+
+    // How to fetch data from API server 
+    // using OFI PHP Framework
+    // For example i wan't to fetch money converter API data
+    // Australia Dollar (AUD) to Indonesian Rupiahs (IDR)
+    [
+        'url'  => 'currency', // Home (main index.php file)
+        'type' => 'json',
+        // using method from not to
+        'from'   => 'https://api.exchangeratesapi.io/latest?base=AUD&symbols=IDR,AUD', 
+    ],
+
     [
         'url'  => '', // Home (main index.php file)
         'type' => 'controller',
         'to'   => 'indexController@index',
     ],
+
+    
 ];

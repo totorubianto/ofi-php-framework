@@ -4,8 +4,9 @@ namespace App\Core;
 
 use App\Designs\design;
 use App\Models\DB;
+use App\provider\event;
 
-class Controller
+class Controller extends event
 {
     protected $data = [];
 
@@ -18,12 +19,13 @@ class Controller
 
     public function error404()
     {
+        $this->whenError();
         $viewData['status'] = 404;
         $viewData['title'] = 'Not Found';
         $viewData['msg'] = 'Sorry but the page you are looking for does not exist, have been removed.';
 
         extract($viewData);
-        include 'App/Views/error_404.php';
+        include 'vendor/error_404.php';
     }
 
     public function error500($pesan)
@@ -33,7 +35,7 @@ class Controller
         $viewData['msg'] = $pesan;
 
         extract($viewData);
-        include 'App/Views/error_404.php';
+        include 'vendor/error_404.php';
     }
 
     public function Views($viewName)

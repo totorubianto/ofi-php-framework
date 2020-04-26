@@ -2,7 +2,9 @@
 
 namespace App\Core;
 
-class Core
+use App\provider\event;
+
+class Core extends event
 {
     private $Url = null;
     private $Controller = '';
@@ -16,12 +18,23 @@ class Core
     }
 
     /**
+     * Method Middleware
+     * for register your middleware in
+     * OFI PHP Framewrok system.
+     */
+    public function middleware()
+    {
+        helper::blockIp();
+    }
+
+    /**
      * Method Run
      * This method will be run for the
      * first time while the program is running.
      */
     public function run()
     {
+        $this->whenRun();
         $this->route();
     }
 
@@ -48,16 +61,6 @@ class Core
         }
 
         return null;
-    }
-
-    /**
-     * Method Middleware
-     * for register your middleware in
-     * OFI PHP Framewrok system.
-     */
-    public function middleware()
-    {
-        helper::blockIp();
     }
 
     public function route()

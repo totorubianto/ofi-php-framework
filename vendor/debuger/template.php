@@ -49,7 +49,7 @@
 
         <div id="RouteInfo" class="collapse container-fluid">
             <?php 
-                include PROJECTPATH . '\App\route\web.php';
+                include 'App/route/web.php';
             ?>
 
             <div class="row">
@@ -63,7 +63,7 @@
                             <?php for ($i=0; $i < count($route) ; $i++) { ?>
                                 <tr>
                                     <td>
-                                        <div>Url : <a class="text-decoration-none text-info" href="<?= PROJECTURL ?><?php echo $route[$i]['url']?>"><?= PROJECTURL ?><?php echo $route[$i]['url']?></a></div>
+                                        <div>Url : <a class="text-decoration-none text-info" href="<?= PROJECTURL ?>/<?php echo $route[$i]['url']?>"><?= PROJECTURL ?>/<?php echo $route[$i]['url']?></a></div>
                                         <div>
                                             Type : 
                                             <?php 
@@ -149,7 +149,7 @@
         <div id="Database" class="collapse container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-sm-12 col-md-12">
-                    <?php include PROJECTPATH . '\config.php'; ?>
+                <?php include 'config.php'; ?>
                     <?php 
                         use App\Core\model; $database_cek = new Model(); 
                     ?>

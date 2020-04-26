@@ -80,6 +80,70 @@ class DB extends Model
         return $results;
     }
 
+    // menampilkan data berdasarkan query and (all dan first)
+    public static function whereAnd($table, $data, $status)
+    {
+        // SELECT * FROM `blog` WHERE id_user = 1 AND kategori = 'artikel' AND user = 'teguh'
+        $sql = "SELECT * FROM $table WHERE ";
+        $jumlah_data_arr = count($data[0]);
+
+        for ($i=0; $i < count($data) ; $i++) { 
+            $sql .= $data[$i][0] . ' = ' . "'" . $data[$i][1] . "'" . " AND ";
+        }
+        
+        // Ekstrak query menjadi array per kalimat
+        //  dan hapus dua elemen dari belakang
+         $sql_array = explode(' ', $sql);
+         array_pop($sql_array); 
+         array_pop($sql_array);
+
+         $sql_now = implode(' ', $sql_array);
+
+         $results = parent::connect($sql_now);
+
+         if($status) {
+            if($status === 'first')
+                return $results[0];
+             else 
+                return $results;
+         } else {
+             return "Error! Please select one all method or first method in your query";
+         }
+
+    }
+
+    // menampilkan data berdasarkan query OR (all dan first)
+    public static function whereOr($table, $data, $status)
+    {
+        // SELECT * FROM `blog` WHERE id_user = 1 AND kategori = 'artikel' AND user = 'teguh'
+        $sql = "SELECT * FROM $table WHERE ";
+        $jumlah_data_arr = count($data[0]);
+
+        for ($i=0; $i < count($data) ; $i++) { 
+            $sql .= $data[$i][0] . ' = ' . "'" . $data[$i][1] . "'" . " OR ";
+        }
+        
+        // Ekstrak query menjadi array per kalimat
+        //  dan hapus dua elemen dari belakang
+         $sql_array = explode(' ', $sql);
+         array_pop($sql_array); 
+         array_pop($sql_array);
+
+         $sql_now = implode(' ', $sql_array);
+         
+         $results = parent::connect($sql_now);
+
+         if($status) {
+            if($status === 'first')
+                return $results[0];
+             else 
+                return $results;
+         } else {
+            return "Error! Please select one all method or first method in your query";
+         }
+
+    }
+
     // Untuk update data berdasarkan id
     public function update($table, $id, $data)
     {
