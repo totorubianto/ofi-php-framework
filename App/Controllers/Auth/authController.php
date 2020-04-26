@@ -18,7 +18,6 @@ class authController extends Controller
     // Redirect to login page
     public function login()
     {
-        $this->whenLogin();
         $this->loadTemplate('Auth\login', null);
     }
 
@@ -47,6 +46,7 @@ class authController extends Controller
 
     public function login_detect()
     {
+        $this->whenLogin();
         $Auth['usernameoremail'] = helper::request('usernameoremail');
         $Auth['password'] = helper::request('password');
 
