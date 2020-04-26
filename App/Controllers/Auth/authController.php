@@ -35,12 +35,13 @@ class authController extends Controller
         $Auth['email'] = helper::request('email');
         $Auth['password'] = helper::hash(helper::request('password'));
 
-        $this->DB->insert($Auth, 'users');
-
+        $database_engine = new DB();
+        $status = $database_engine->insert($Auth, 'users');
+        $flash = new \Plasticbrain\FlashMessages\FlashMessages();
         if ($status == 'gagal') {
-            $this->flash->error('Failed to registration, try again', '/register');
+            $flash->error('Failed to registration, try again', '/register');
         } else {
-            $this->flash->success('Registration success, please login now', '/register');
+            $flash->success('Registration success, please login now', '/register');
         }
     }
 

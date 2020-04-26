@@ -22,7 +22,7 @@
 
                 <?php
                     $design->form('post', [
-                        'url'    => '/login-detect',
+                        'url'    => '/deteksi-masuk',
                         'submit' => 'Login',
                         'input'  => [
                             [

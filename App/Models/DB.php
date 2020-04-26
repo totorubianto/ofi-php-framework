@@ -6,7 +6,7 @@ use App\Core\Model;
 
 class DB extends Model
 {
-    public $status;
+    //public $status;
 
     // Untuk menyimpan data
     public function insert($data, $table)

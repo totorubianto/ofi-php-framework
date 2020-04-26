@@ -18,7 +18,9 @@ class auth
     {
         if ($_SESSION['login_user'] == 'sukses') {
             self::cek_valuenya();
-        } 
+        } else {
+            if(strpos(BASE, 'login') !== false) {} else {helper::redirect('/login');}
+        }
     }
 
     public static function cek_valuenya()
