@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\helper;
 use App\Middleware\auth\auth;
 use App\Models\DB;
+use App\provider\event;
 
 class authController extends Controller
 {
@@ -17,6 +18,7 @@ class authController extends Controller
     // Redirect to login page
     public function login()
     {
+        $this->whenLogin();
         $this->loadTemplate('Auth\login', null);
     }
 
@@ -28,6 +30,7 @@ class authController extends Controller
 
     public function register_save()
     {
+        $this->whenRegistration();
         $Auth['fullname'] = helper::request('Full name');
         $Auth['username'] = helper::request('username');
         $Auth['email'] = helper::request('email');
@@ -62,6 +65,7 @@ class authController extends Controller
 
     public function logout()
     {
+        $this->whenLogout();
         $_SESSION['login_user'] = null;
         $_SESSION['id_user'] = null;
         helper::redirect('/login');

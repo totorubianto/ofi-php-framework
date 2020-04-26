@@ -42,6 +42,16 @@ class event {
     }
 
     /**
+     * This method will called when someone user
+     * logout from your system
+     */
+
+    public function whenLogout()
+    {
+        # code...
+    }
+
+    /**
      * This method will called when your system
      * have 400 or 500 error
      */
