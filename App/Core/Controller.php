@@ -30,6 +30,7 @@ class Controller extends event
 
     public function error500($pesan)
     {
+        $this->whenError();
         $viewData['status'] = 500;
         $viewData['title'] = 'Server Error';
         $viewData['msg'] = $pesan;

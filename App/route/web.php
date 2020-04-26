@@ -21,8 +21,8 @@ $route = [
     // Auth Route Declaration
     // you can remove comment tag to turn on this route
 
-    // ['url' => "login",'type' => 'controller','to' => 'Auth\authController@login',],
-    // ['url' => "register",'type' => 'controller','to' => 'Auth\authController@register',],
+    ['url' => "login",'type' => 'controller','to' => 'Auth\authController@login',],
+    ['url' => "register",'type' => 'controller','to' => 'Auth\authController@register',],
     // ['url' => "register-save", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@register_save',],
     // ['url' => "login-detect", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@login_detect',],
     // ['url' => "logout", 'method' => 'POST', 'type' => 'controller','to' => 'Auth\authController@logout',],

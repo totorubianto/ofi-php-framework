@@ -4,6 +4,7 @@ namespace App\Middleware\auth;
 
 use App\Core\Controller;
 use App\Models\DB;
+use App\Core\helper;
 
 /**
  * Login Middleware
@@ -15,14 +16,9 @@ class auth
 {
     public static function check()
     {
-        if ($_SESSION['login_user'] != 'sukses') {
-            $kontroller = new Controller();
-            $flash = new \Plasticbrain\FlashMessages\FlashMessages();
-            $flash->error('Failed to login, try again');
-            $kontroller->loadTemplate('Auth\login', null);
-        } else {
+        if ($_SESSION['login_user'] == 'sukses') {
             self::cek_valuenya();
-        }
+        } 
     }
 
     public static function cek_valuenya()
