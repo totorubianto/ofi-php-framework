@@ -25,9 +25,9 @@ class indexController extends Controller
 
     public function show()
 	{
-		$id = helper::request('slug');
-		$data = DB::where('blog', ['slug', $id]);
-		$this->loadTemplate('blog/show', ['d' => $data]);
+		$id = helper::request('slug'); // Get slug as id
+		$data = DB::where('blog', ['slug', $id]); // Search by $id in slug, blog is name of table
+		$this->loadTemplate('blog/show', ['d' => $data]); // Throw data to view/blog/show file
 	}
 
 	public function save()
@@ -36,15 +36,19 @@ class indexController extends Controller
 		$artikel['isi'] = helper::request('isi');
 		$artikel['slug'] = helper::slug($judul);
 
-		$this->DB->insert($artikel, 'blog');
+		$this->DB->insert($artikel, 'blog'); // blog is name of table
 		$this->flash->success('Sukses menambah data artikel', '/');	
 	}
 
 	public function delete()
 	{
+		// get id
 		$id = helper::request('id');
+		// blog is name of your table
 		$this->DB->delete('blog', $id);
-		$this->flash->success('Sukses menghapus data artikel', '/');
+		// make a flash notification
+		$this->flash->success('Sukses menghapus data artikel', '/artikel');
+		// /artikel is where do you want to redirect after successfully delete data
 	}
 
 	public function edit()
