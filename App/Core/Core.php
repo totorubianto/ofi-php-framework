@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Middleware\cors;
 use App\provider\event;
 
 class Core extends event
@@ -25,6 +26,7 @@ class Core extends event
     public function middleware()
     {
         helper::blockIp();
+        cors::allow();
     }
 
     /**

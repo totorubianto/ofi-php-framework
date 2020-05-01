@@ -21,7 +21,6 @@ define('BASE', (
     "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 define('BASEURL', __DIR__.'/');
 define('PROJECTPATH', __DIR__);
-header('Access-Control-Allow-Origin: *');
 
 /**
  * OFI PHP Framework
