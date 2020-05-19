@@ -26,7 +26,7 @@
 
 	<?php 
 		if(ENVIRONMENT == 'development')
-		include 'debuger\template.php';
+		include 'debuger/template.php';
 	?>
 
 </body>

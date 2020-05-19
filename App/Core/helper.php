@@ -19,8 +19,40 @@ class helper
         // inputan yang namanya ada spasinya
         $hapus_spasi = str_replace(' ', '', $val_request);
         $jadi_kecil = strtolower($hapus_spasi);
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $_REQUEST[$jadi_kecil];     
+        } else {
+            return $_GET[$hapus_spasi];
+        }
 
-        return $_REQUEST[$jadi_kecil];
+    }
+
+    /**
+     * Method request
+     * this method is to take a data
+     * from a ajax request.
+     */
+
+    public static function ajaxRequest($val_request)
+    {   
+        // Jika POST Method
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            if(!$_REQUEST[$val_request]) {
+                return $_REQUEST[$val_request];
+            } else {
+                return $_POST[$val_request];
+            }
+
+        } else {
+            // Jika GET Method
+            if(!$_REQUEST[$val_request]) {
+                return $_REQUEST[$val_request];
+            } else {
+                return $_GET[$val_request];
+            }
+        }   
     }
 
     /**

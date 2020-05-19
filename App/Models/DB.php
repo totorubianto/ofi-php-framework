@@ -40,6 +40,13 @@ class DB extends Model
         return $status;
     }
 
+    // Untuk mengosongkan satu tabel
+    // keseluruhan
+    public function empty($table) {
+        $sql = "DELETE FROM $table";
+        return $this->db->query($sql);
+    }
+
     // Untuk menampilkan semua data by array
     // hanya mendukung query order by
 
