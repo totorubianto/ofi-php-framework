@@ -37,6 +37,7 @@ class helper
     public static function ajaxRequest($val_request)
     {   
         // Jika POST Method
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if(!$_REQUEST[$val_request]) {
@@ -47,6 +48,7 @@ class helper
 
         } else {
             // Jika GET Method
+
             if(!$_REQUEST[$val_request]) {
                 return $_REQUEST[$val_request];
             } else {
