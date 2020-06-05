@@ -37,7 +37,7 @@ class helper
     public static function ajaxRequest($val_request)
     {   
         $handle_request = null;
-        // Akan ada banyak method, delete, put dll
+        // Akan ada banyak method, delete, put dll 
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST':
                 $handle_request = $_POST[$val_request];
