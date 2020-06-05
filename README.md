@@ -20,7 +20,7 @@
         Nur Khofifah as Documentation Designer - <a href="mailto:nurkhofifah2699@gmail.com">nurkhofifah2699@gmail.com </a>
     </li>
     <li>
-        Toto Rubianto as Programmer - <a href="https://github.com/totorubianto">Toto Profil</a>
+        Toto Rubianto as Programmer - <a href="https://github.com/totorubianto">Toto Github Profile</a>
     </li>
 </ul>
 
