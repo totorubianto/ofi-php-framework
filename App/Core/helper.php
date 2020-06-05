@@ -36,25 +36,21 @@ class helper
 
     public static function ajaxRequest($val_request)
     {   
-        // Jika POST Method
-        
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
-            if(!$_REQUEST[$val_request]) {
-                return $_REQUEST[$val_request];
-            } else {
-                return $_POST[$val_request];
-            }
-
-        } else {
-            // Jika GET Method
-
-            if(!$_REQUEST[$val_request]) {
-                return $_REQUEST[$val_request];
-            } else {
-                return $_GET[$val_request];
-            }
-        }   
+        $handle_request = null;
+        // Akan ada banyak method, delete, put dll
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'POST':
+                $handle_request = $_POST[$val_request];
+            case 'GET':
+                $handle_request = $_GET[$val_request];
+            default:
+                // throw error
+                break;
+        }
+        if(!$_REQUEST[$val_request]){
+            $handle_request = $_REQUEST[$val_request];
+        }
+        return $handle_request;
     }
 
     /**
