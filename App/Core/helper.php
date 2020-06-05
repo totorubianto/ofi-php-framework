@@ -270,12 +270,14 @@ class helper
         $mail->AltBody = $data['body'];
         $mail->Body = $data['body'];
 
-        if ($data['attachment'] && $data['attachment']['type'] == 'url') {
-            $mail->addStringAttachment(file_get_contents($data['attachment']['value']), $data['attachment']['name']);
-        } else {
-            $mail->addAttachment($data['attachment']['value']);
+        if ($data['attachment']) {
+            if ($data['attachment']['type'] == 'url') {
+                $mail->addStringAttachment(file_get_contents($data['attachment']['value']), $data['attachment']['name']);
+            } else {
+                $mail->addAttachment($data['attachment']['value']);
+            }
         }
-        
+
         $mail->send();
 
         return $mail;
