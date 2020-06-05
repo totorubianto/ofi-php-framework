@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Auth;
 
-use App\Core\Controller;
+use vendor\Controller;
 use App\Core\helper;
 use App\Middleware\auth\auth;
 use App\Models\DB;
@@ -12,7 +12,12 @@ class authController extends Controller
 {
     public function __construct()
     {
-        auth::check();
+        //auth::check();
+    }
+
+    public function test()
+    {
+        echo "it works";
     }
 
     // Redirect to login page

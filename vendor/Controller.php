@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace vendor;
 
 use App\Designs\design;
 use App\Models\DB;
@@ -9,12 +9,56 @@ use App\provider\event;
 class Controller extends event
 {
     protected $data = [];
+    private $response;
 
     public function __construct()
     {
-        $this->DB = new DB();
-        $this->db = new DB();
         $this->flash = new \Plasticbrain\FlashMessages\FlashMessages();
+        $this->response = null;
+    }
+
+    public function response()
+    {
+        return $this;
+    }
+
+    public function print_r($params)
+    {
+        echo "<pre>";
+            print_r($params);
+        echo "<pre>";
+    }
+
+    public function var_dump($params)
+    {
+        echo "<pre>";
+            var_dump($params);
+            die();
+        echo "<pre>";
+    }
+
+    // Response print to json
+
+    public function json($data, $code)
+    {
+        // Set content type menjadi application/json
+        header('Content-Type: application/json');
+        http_response_code($code);
+        echo json_encode($data);
+    }
+
+    /**
+     * Method redirect
+     * To give a new response redirect to a url.
+     */
+
+    public function redirect($url)
+    {
+        if(strpos($url, 'http') !== false || strpos($url, 'https') !== false) {
+            return header('Location: '.$url);
+        } else {
+            return header('Location: '. PROJECTURL . '/' . $url);
+        }        
     }
 
     public function error404()
@@ -39,25 +83,9 @@ class Controller extends event
         include 'vendor/error_404.php';
     }
 
-    public function Views($viewName)
-    {
-        if (ENVIRONMENT != 'production') {
-            require 'vendor/autoload.php';
-            $whoops = new \Whoops\Run();
-            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
-            $whoops->register();
-        } else {
-            $this->error500('There a something error, please turn on development mode to see  error message');
-        }
-
-        extract($viewData = []);
-        include 'vendor/template.php';
-    }
-
     public function loadView($viewName, $viewData = [])
     {
-        extract($viewData);
-        include 'App/Views/'.$viewName.'.php';
+        $this->loadTemplate($viewName, $viewData);
     }
 
     public function loadTemplate($viewName, $viewData = [])
@@ -70,8 +98,7 @@ class Controller extends event
     {
         $flash = new \Plasticbrain\FlashMessages\FlashMessages();
         $helper = new \App\Core\helper();
-        $design = new design();
         extract($viewData);
-        include 'App/Views/'.$viewName.'.php';
+        include 'App/Views/'.$viewName.'.ofi.php';
     }
 }

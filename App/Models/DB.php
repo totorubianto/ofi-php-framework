@@ -2,180 +2,267 @@
 
 namespace App\Models;
 
-use App\Core\Model;
+use vendor\Model;
 
 class DB extends Model
 {
-    //public $status;
+    private $selectables = array();
+    private $table;
+    private $whereAnd = [];
+    private $whereOr = [];
+    private $whereAndValue = [];
+    private $whereOrValue = [];
+    private $limit;
 
-    // Untuk menyimpan data
-    public function insert($data, $table)
-    {
-        // Menentukan kolom apa saja yang ingin diinputkan
-        foreach ($data as $key=>$val) {
-            $value .= "$key,";
-        }
+    /**
+     * Notice
+     * -> where('id', 2)
+     * 1. id is key and store in $whereAnd or $whereOr array
+     * 2. 2 is value store in $whereAndValue or $whereOrValue array
+     */
 
-        // Menghapus tanda koma pada posisi paling kanan
-        $value = rtrim($value, ',');
-
-        // Skrip untuk memasukan value pada skrip SQL
-        foreach ($data as $key => $val) {
-            $konten .= "'$val',";
-        }
-
-        // Menghapus tanda koma pada posisi paling kanan
-        $konten = rtrim($konten, ',');
-
-        // Skrip SQL untuk insert
-        $sql = "INSERT INTO $table ($value) VALUES ($konten)";
-        $result = $this->db->query($sql);
-
-        if ($result) {
-            $status = 'berhasil';
-        } else {
-            $status = 'gagal';
-        }
-
-        return $status;
+    public function select() {
+        $this->selectables = func_get_args();
+        return $this;
     }
 
-    // Untuk mengosongkan satu tabel
-    // keseluruhan
-    public function empty($table) {
-        $sql = "DELETE FROM $table";
-        return $this->db->query($sql);
+    public function from($table) {
+        $this->table = $table;
+        return $this;
     }
 
-    // Untuk menampilkan semua data by array
-    // hanya mendukung query order by
+    public function where($key, $value) {
+        // Push data ketika method ini dipanggil
+        array_push($this->whereAnd, $key);
+        array_push($this->whereAndValue, $value);
+        return $this;
+    }
 
-    public static function all($table, $query)
-    {
-        $sql = "SELECT * FROM $table ";
+    public function whereOr($key, $value) {
+        // Push data ketika method ini dipanggil
+        array_push($this->whereOr, $key);
+        array_push($this->whereOrValue, $value);
+        return $this;
+    }
 
-        if ($query) {
-            $order_by_key = $query['ORDER BY'][0];
-            $order_by_val = $query['ORDER BY'][1];
-            $sql .= 'ORDER BY '.$order_by_key.' '.$order_by_val;
+    public function limit($limit) {
+        $this->limit = $limit;
+        return $this;
+    }
+
+    public function get() {
+
+        $query[] = "SELECT";
+        // if the selectables array is empty, select all
+        if (empty($this->selectables)) {
+            $query[] = "*";  
+        }
+        // else select according to selectables
+        else {
+            $query[] = join(', ', $this->selectables);
         }
 
-        return $connect = parent::connect($sql);
-    }
-
-    // menampilkan hanya satu data berdasarkan id by array
-    public static function where($table, $data)
-    {
-        $id = $data[0];
-        $id_val = $data[1];
-
-        $sql = "SELECT * FROM $table WHERE $id = '".$id_val."'";
-        $results = parent::connect($sql);
-
-        return $results[0];
-    }
-
-    // menampilkan semua data berdasarkan id
-    public static function whereAll($table, $data)
-    {
-        $id = $data[0];
-        $id_val = $data[1];
-
-        $sql = "SELECT * FROM $table WHERE $id = '".$id_val."'";
-        $results = parent::connect($sql);
-
-        return $results;
-    }
-
-    // menampilkan data berdasarkan query and (all dan first)
-    public static function whereAnd($table, $data, $status)
-    {
-        // SELECT * FROM `blog` WHERE id_user = 1 AND kategori = 'artikel' AND user = 'teguh'
-        $sql = "SELECT * FROM $table WHERE ";
-        $jumlah_data_arr = count($data[0]);
-
-        for ($i=0; $i < count($data) ; $i++) { 
-            $sql .= $data[$i][0] . ' = ' . "'" . $data[$i][1] . "'" . " AND ";
-        }
+        $query[] = "FROM";
+        $query[] = "`" . $this->table . "`";
         
-        // Ekstrak query menjadi array per kalimat
-        //  dan hapus dua elemen dari belakang
-         $sql_array = explode(' ', $sql);
-         array_pop($sql_array); 
-         array_pop($sql_array);
+        /**
+         * Jika query where and tidak kosong
+         */
 
-         $sql_now = implode(' ', $sql_array);
+        if (!empty($this->whereAnd)) {
+            $query[] = " WHERE ";
 
-         $results = parent::connect($sql_now);
+            for ($i=0; $i < count($this->whereAnd) ; $i++) { 
+                $sql .= $this->whereAnd[$i] . " = '" . $this->whereAndValue[$i] . "'" . " AND ";
+            }
 
-         if($status) {
-            if($status === 'first')
-                return $results[0];
-             else 
-                return $results;
-         } else {
-             return "Error! Please select one all method or first method in your query";
-         }
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
 
-    }
-
-    // menampilkan data berdasarkan query OR (all dan first)
-    public static function whereOr($table, $data, $status)
-    {
-        // SELECT * FROM `blog` WHERE id_user = 1 AND kategori = 'artikel' AND user = 'teguh'
-        $sql = "SELECT * FROM $table WHERE ";
-        $jumlah_data_arr = count($data[0]);
-
-        for ($i=0; $i < count($data) ; $i++) { 
-            $sql .= $data[$i][0] . ' = ' . "'" . $data[$i][1] . "'" . " OR ";
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
         }
+
+        /**
+         * Jika query where or tidak kosong
+         */
         
-        // Ekstrak query menjadi array per kalimat
-        //  dan hapus dua elemen dari belakang
-         $sql_array = explode(' ', $sql);
-         array_pop($sql_array); 
-         array_pop($sql_array);
+        if (!empty($this->whereOr)) {
+            $query[] = " WHERE ";
 
-         $sql_now = implode(' ', $sql_array);
-         
-         $results = parent::connect($sql_now);
+            for ($i=0; $i < count($this->whereOr) ; $i++) { 
+                $sql .= $this->whereOr[$i] . " = '" . $this->whereOrValue[$i] . "'" . " OR ";
+            }
 
-         if($status) {
-            if($status === 'first')
-                return $results[0];
-             else 
-                return $results;
-         } else {
-            return "Error! Please select one all method or first method in your query";
-         }
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
 
-    }
-
-    // Untuk update data berdasarkan id
-    public function update($table, $id, $data)
-    {
-        $id_key = $id['where'];
-        $id_val = $id['value'];
-
-        // Menentukan kolom apa saja yang ingin diinputkan
-        foreach ($data as $key=>$val) {
-            $value .= "$key = '$val',";
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
         }
 
-        // Menghapus tanda koma pada posisi paling kanan
-        $query = rtrim($value, ',');
+        
+        /**
+         * Jika query limit or tidak kosong
+         */
 
-        $sql = "UPDATE $table SET $query WHERE $id_key = '$id_val'";
+        if (!empty($this->limit)) {
+            $query[] = "LIMIT";
+            $query[] = "'" . $this->limit . "'";
+        }
 
-        return $result = $this->db->query($sql);
+        for ($i=0; $i < 5 ; $i++) { 
+            array_shift($query);
+        }
+
+        return $this->connect(join(' ', $query));
     }
 
-    // Untuk menghapus data berdasarkan id
-    public function delete($table, $id)
-    {
-        $sql = "DELETE FROM $table WHERE id = $id";
+    /**
+     * Untuk mendapatkan jumlah data berdasarkan query
+     */
 
-        return $this->db->query($sql);
+    public function total() {
+
+        $query[] = "SELECT";
+        // if the selectables array is empty, select all
+        if (empty($this->selectables)) {
+            $query[] = "*";  
+        }
+        // else select according to selectables
+        else {
+            $query[] = join(', ', $this->selectables);
+        }
+
+        $query[] = "FROM";
+        $query[] = "`" . $this->table . "`";
+        
+        /**
+         * Jika query where and tidak kosong
+         */
+
+        if (!empty($this->whereAnd)) {
+            $query[] = " WHERE ";
+
+            for ($i=0; $i < count($this->whereAnd) ; $i++) { 
+                $sql .= $this->whereAnd[$i] . " = '" . $this->whereAndValue[$i] . "'" . " AND ";
+            }
+
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
+
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
+        }
+
+        /**
+         * Jika query where or tidak kosong
+         */
+        
+        if (!empty($this->whereOr)) {
+            $query[] = " WHERE ";
+
+            for ($i=0; $i < count($this->whereOr) ; $i++) { 
+                $sql .= $this->whereOr[$i] . " = '" . $this->whereOrValue[$i] . "'" . " OR ";
+            }
+
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
+
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
+        }
+
+        
+        /**
+         * Jika query limit or tidak kosong
+         */
+
+        if (!empty($this->limit)) {
+            $query[] = "LIMIT";
+            $query[] = "'" . $this->limit . "'";
+        }
+
+        for ($i=0; $i < 5 ; $i++) { 
+            array_shift($query);
+        }
+
+        return count($this->connect(join(' ', $query)));
+    }
+
+    /**
+     * Untuk mendapatkan hasil data hanya satu saja
+     * beda jika dengan get yang mendapatkan semuanya
+     */
+
+    public function first() {
+
+        $query[] = "SELECT";
+        // if the selectables array is empty, select all
+        if (empty($this->selectables)) {
+            $query[] = "*";  
+        }
+        // else select according to selectables
+        else {
+            $query[] = join(', ', $this->selectables);
+        }
+
+        $query[] = "FROM";
+        $query[] = "`" . $this->table . "`";
+        
+        /**
+         * Jika query where and tidak kosong
+         */
+
+        if (!empty($this->whereAnd)) {
+            $query[] = " WHERE ";
+
+            for ($i=0; $i < count($this->whereAnd) ; $i++) { 
+                $sql .= $this->whereAnd[$i] . " = '" . $this->whereAndValue[$i] . "'" . " AND ";
+            }
+
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
+
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
+        }
+
+        /**
+         * Jika query where or tidak kosong
+         */
+        
+        if (!empty($this->whereOr)) {
+            $query[] = " WHERE ";
+
+            for ($i=0; $i < count($this->whereOr) ; $i++) { 
+                $sql .= $this->whereOr[$i] . " = '" . $this->whereOrValue[$i] . "'" . " OR ";
+            }
+
+            $sql_explode = explode(' ', $sql);
+                array_pop($sql_explode);
+                array_pop($sql_explode);
+
+            $query[] = join(' ', $query) . implode(' ', $sql_explode);
+        }
+
+        
+        /**
+         * Jika query limit tidak kosong
+         */
+
+        if (!empty($this->limit)) {
+            $query[] = "LIMIT";
+            $query[] = "'" . $this->limit . "'";
+        }
+
+        for ($i=0; $i < 5 ; $i++) { 
+            array_shift($query);
+        }
+
+        $hasil = $this->connect(join(' ', $query));
+
+        return $hasil[0] ;
     }
 
     public function get_user_login($val)

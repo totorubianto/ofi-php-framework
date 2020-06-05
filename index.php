@@ -3,7 +3,6 @@
 /**
  * OFI PHP Framework
  * By Teguh Rijanandi
- * Version 1.0
  * Contact : teguhrijanandi02@gmail.com.
  */
 session_start();
@@ -62,5 +61,5 @@ switch (ENVIRONMENT) {
         break;
 }
 
-$core = new App\Core\Core();
+$core = new vendor\Core();
 $core->run();

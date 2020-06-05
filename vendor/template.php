@@ -9,8 +9,8 @@
 	<meta property="og:title" content="<?php echo PROJECTNAME ?>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<?php echo PROJECTURL; ?>" />
-	<link rel="shortcut icon" href="<?php echo PROJECTURL; ?>/favicon.png">
-	<meta property="og:image" content="<?php echo PROJECTURL; ?>/favicon.png" />
+	<link rel="shortcut icon" href="<?php echo PROJECTURL; ?>/assets/favicon.png">
+	<meta property="og:image" content="<?php echo PROJECTURL; ?>/assets/favicon.png" />
 	<meta name="robots" content="index, follow">
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="<?php echo AUTHOR ?>">
@@ -26,7 +26,7 @@
 
 	<?php 
 		if(ENVIRONMENT == 'development')
-		include 'debuger/template.php';
+		//include 'debuger/template.php';
 	?>
 
 </body>
