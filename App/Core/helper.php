@@ -210,15 +210,12 @@ class helper
      */
     public static function auth($datas)
     {
-        if (!$_SESSION['login_user']) {
-            $results = null;
-        } else {
-            $val['id'] = $_SESSION['id_user'];
-            $database_engine = new DB();
-            $hasil = $database_engine->get_user_login($val);
-            $results = $hasil[$datas];
-        }
-
+        $results = null;
+        if (!$_SESSION['login_user']) return $results;
+        $val['id'] = $_SESSION['id_user'];
+        $database_engine = new DB();
+        $hasil = $database_engine->get_user_login($val);
+        $results = $hasil[$datas];
         return $results;
     }
 
@@ -273,15 +270,12 @@ class helper
         $mail->AltBody = $data['body'];
         $mail->Body = $data['body'];
 
-        if (!$data['attachment']) {
+        if ($data['attachment'] && $data['attachment']['type'] == 'url') {
+            $mail->addStringAttachment(file_get_contents($data['attachment']['value']), $data['attachment']['name']);
         } else {
-            if ($data['attachment']['type'] == 'url') {
-                $mail->addStringAttachment(file_get_contents($data['attachment']['value']), $data['attachment']['name']);
-            } else {
-                $mail->addAttachment($data['attachment']['value']);
-            }
+            $mail->addAttachment($data['attachment']['value']);
         }
-
+        
         $mail->send();
 
         return $mail;
